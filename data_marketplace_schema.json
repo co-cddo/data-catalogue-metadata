@@ -1,0 +1,44 @@
+{
+  "title": "Data Marketplace Metadata",
+  "description": "Data Marketplace Metadata",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "The full and formal name given to an information resource. A name given to the distribution.",
+      "type": "string"
+     },
+     "alternativeTitle": {
+       "description": "An alternative name used as a substitute or additional access point for an information resource.",
+       "type": "array",
+       "items": {
+         "type": "string"
+       }
+     },
+     "summary": {
+      "description": "A short textual summary of the resource with a maximum length of 250 characters.",
+      "type": "string",
+      "maxLength": 250
+     },
+     "description": {
+      "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
+      "type": "string"
+     },
+     "keyword": {
+      "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+     },
+     "theme": {
+      "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+     }
+  },
+  "required": [
+    "title"
+  ]
+}

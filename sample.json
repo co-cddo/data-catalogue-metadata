@@ -1,0 +1,27 @@
+{
+  "title": "Demo ESDA",
+  "alternativeTitle": [
+    "Demo ESDA"
+  ],
+  "summary": "This is a summary",
+  "description": "This is a description",
+  "keyword": [
+    "demo"
+  ],
+  "theme": [
+    "demo"
+  ],
+  "contactPoint": {
+    "contactName": "Rob Nichols",
+    "email": "robert.nichols@digital.cabinet-office.gov.uk"
+  },
+  "creator": [
+    "central-digital-and-data-office"
+  ],
+  "publisher": "central-digital-and-data-office",
+  "securityClassification": "OFFICIAL",
+  "identifier": "abcefg123",
+  "relatedResource": [
+    ""
+  ]
+}
