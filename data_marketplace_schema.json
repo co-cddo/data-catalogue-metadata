@@ -6,37 +6,80 @@
     "title": {
       "description": "The full and formal name given to an information resource. A name given to the distribution.",
       "type": "string"
-     },
-     "alternativeTitle": {
-       "description": "An alternative name used as a substitute or additional access point for an information resource.",
-       "type": "array",
-       "items": {
-         "type": "string"
-       }
-     },
-     "summary": {
+    },
+    "alternativeTitle": {
+      "description": "An alternative name used as a substitute or additional access point for an information resource.",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+    },
+    "summary": {
       "description": "A short textual summary of the resource with a maximum length of 250 characters.",
       "type": "string",
       "maxLength": 250
-     },
-     "description": {
+    },
+    "description": {
       "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
       "type": "string"
-     },
-     "keyword": {
+    },
+    "keyword": {
       "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
       "type": "array",
       "items": {
         "type": "string"
       }
-     },
-     "theme": {
+    },
+    "theme": {
       "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
       "type": "array",
       "items": {
         "type": "string"
       }
-     }
+    },
+    "contactPoint": {
+      "desciption": "",
+      "type": "object",
+      "properties": {
+        "contactName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "creator": {
+      "description": "The business entity responsible for creating or compiling the original content of an information resource..",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publisher": {
+      "description": "The business entity responsible for making an information resource publicly available.",
+      "type": "string"
+    },
+    "securityClassification": {
+      "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
+      "enum": [
+        "OFFICIAL",
+        "SECRET",
+        "TOP_SECRET",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "identifier": {
+      "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
+      "type": "string"
+    },
+    "relatedResource": {
+      "description": "A resource that bears a close relationship to the described resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
   },
   "required": [
     "title"
