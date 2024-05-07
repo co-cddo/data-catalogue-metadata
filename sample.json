@@ -23,5 +23,6 @@
   "identifier": "abcefg123",
   "relatedResource": [
     ""
-  ]
+  ],
+  "DQ_RelatedResource": "Yes"
 }

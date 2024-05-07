@@ -47,7 +47,11 @@
         "email": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "contactName",
+        "email"
+      ]
     },
     "creator": {
       "description": "The business entity responsible for creating or compiling the original content of an information resource..",
@@ -79,9 +83,24 @@
       "items": {
         "type": "string"
       }
+    },
+    "DQ_RelatedResource": {
+      "description": "Does this data asset have a Data Quality Action Plan associated with it, consistent with the definition described in the Govt Data Quality Framework?",
+      "enum": [
+        "Yes",
+        "No"
+      ]
     }
   },
   "required": [
-    "title"
+    "title",
+    "description",
+    "keyword",
+    "theme",
+    "contactPoint",
+    "publisher",
+    "securityClassification",
+    "identifier",
+    "DQ_RelatedResource"
   ]
 }
