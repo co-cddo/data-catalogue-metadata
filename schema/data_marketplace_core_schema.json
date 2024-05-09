@@ -1,6 +1,6 @@
 {
-  "title": "Data Marketplace Metadata",
-  "description": "Data Marketplace Metadata",
+  "title": "Data Marketplace Metadata - core",
+  "description": "Data Marketplace Metadata schema for the core or minimum dataset",
   "type": "object",
   "properties": {
     "title": {
@@ -38,7 +38,7 @@
       }
     },
     "contactPoint": {
-      "desciption": "",
+      "desciption": "Contact information",
       "type": "object",
       "properties": {
         "contactName": {

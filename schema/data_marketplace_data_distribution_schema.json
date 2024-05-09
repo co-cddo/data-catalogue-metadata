@@ -1,0 +1,201 @@
+{
+  "title": "Data Marketplace Metadata - Data Distribution",
+  "description": "Data Marketplace Metadata schema for when a dataset has a distribution associated with it",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "The full and formal name given to an information resource.",
+      "type": "string"
+    },
+    "alternativeTitle": {
+      "description": "An alternative name used as a substitute or additional access point for an information resource.",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+    },
+    "summary": {
+      "description": "A short textual summary of the resource with a maximum length of 250 characters.",
+      "type": "string",
+      "maxLength": 250
+    },
+    "description": {
+      "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
+      "type": "string"
+    },
+    "keyword": {
+      "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "theme": {
+      "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contactPoint": {
+      "desciption": "Contact information",
+      "type": "object",
+      "properties": {
+        "contactName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "contactName",
+        "email"
+      ]
+    },
+    "creator": {
+      "description": "The business entity responsible for creating or compiling the original content of an information resource..",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publisher": {
+      "description": "The business entity responsible for making an information resource publicly available.",
+      "type": "string"
+    },
+    "securityClassification": {
+      "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
+      "enum": [
+        "OFFICIAL",
+        "SECRET",
+        "TOP_SECRET",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "identifier": {
+      "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
+      "type": "string"
+    },
+    "relatedResource": {
+      "description": "A resource that bears a close relationship to the described resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "DQ_RelatedResource": {
+      "description": "Does this data asset have a Data Quality Action Plan associated with it, consistent with the definition described in the Govt Data Quality Framework?",
+      "enum": [
+        "Yes",
+        "No"
+      ]
+    },
+    "version": {
+      "description": "The version indicator (name or identifier) of a resource.",
+      "type": "string"
+    },
+    "issued": {
+      "description": "The date on which an information resource was originally published or otherwise made publicly available for the first time.",
+      "type": "string",
+      "format": "date"
+    },
+    "modified": {
+      "description": "The date on which the content of an information resource is changed.",
+      "type": "string",
+      "format": "date"
+    },
+    "created": {
+      "description": "The date on which the content of an information resource is created or compiled. ",
+      "type": "string",
+      "format": "date"
+    },
+    "updateFrequency": {
+      "description": "",
+      "enum": [
+        "freq:triennial",
+        "freq:biennial",
+        "freq:annual",
+        "freq:semiannual",
+        "freq:threeTimesAYear",
+        "freq:quarterly",
+        "freq:bimonthly",
+        "freq:monthly",
+        "freq:semimonthly",
+        "freq:biweekly",
+        "freq:threeTimesAMonth",
+        "freq:weekly",
+        "freq:semiweekly",
+        "freq:threeTimesAWeek",
+        "freq:daily",
+        "freq:continuous",
+        "freq:irregular"
+      ]
+    },
+    "licence": {
+      "description": "Reference to the legal document outlining access and usage rights for an information resource.",
+      "type": "string"
+    },
+    "accessRights": {
+      "description": "A rights statement that concerns how the distribution is accessed.",
+      "enum": [
+        "INTERNAL",
+        "OPEN",
+        "COMMERCIAL"
+      ]
+    },
+    "distribution": {
+      "description": "A specific representation of a dataset.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "A name given to the distribution.",
+          "type": "string"
+        },
+        "accessService": {
+          "description": "A data service that gives access to the distribution of the dataset.",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
+          "type": "string"
+        },
+        "modified": {
+          "description": "The date on which the distribution is changed.",
+          "type": "string",
+          "format": "date"
+        },
+        "issued": {
+          "description": "The date on which a distribution was originally published",
+          "type": "string",
+          "format": "date"
+        },
+        "licence": {
+          "description": "A legal document under which the distribution is made available.",
+          "type": "string"
+        },
+        "byteSize": {
+          "description": "The size of the distribution in bytes.",
+          "type": "integer"
+        },
+        "mediaType": {
+          "description": "",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "keyword",
+    "theme",
+    "contactPoint",
+    "publisher",
+    "securityClassification",
+    "identifier",
+    "DQ_RelatedResource",
+    "accessRights"
+  ]
+}
+

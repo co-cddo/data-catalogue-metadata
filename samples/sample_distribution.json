@@ -1,0 +1,46 @@
+{
+  "title": "Demo ESDA",
+  "alternativeTitle": [
+    "Demo ESDA"
+  ],
+  "summary": "This is a summary",
+  "description": "This is a description",
+  "keyword": [
+    "demo"
+  ],
+  "theme": [
+    "demo"
+  ],
+  "contactPoint": {
+    "contactName": "Rob Nichols",
+    "email": "robert.nichols@digital.cabinet-office.gov.uk"
+  },
+  "creator": [
+    "central-digital-and-data-office"
+  ],
+  "publisher": "central-digital-and-data-office",
+  "securityClassification": "OFFICIAL",
+  "identifier": "abcefg123",
+  "relatedResource": [
+    ""
+  ],
+  "DQ_RelatedResource": "Yes",
+  "version": "0.0.1",
+  "issued": "2024-05-09",
+  "modified": "2024-05-09",
+  "created": "2024-05-09",
+  "updateFrequency": "freq:monthly",
+  "licence": "https://osdatahub.os.uk/legal/termsConditions",
+  "accessRights": "INTERNAL",
+  "distribution": {
+    "title": "A distribution",
+    "accessService": "http://example.com/service",
+    "identifier": "8802aaf5-85b0-43a4-8b03-c0d01b0287be",
+    "modified": "2024-05-09",
+    "issued": "2024-05-09",
+    "licence": "https://osdatahub.os.uk/legal/termsConditions",
+    "byteSize": 2045,
+    "mediaType": "text/csv "
+  }
+
+}
