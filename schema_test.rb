@@ -1,11 +1,33 @@
 require "json-schema"
 require "json"
 
-sample = JSON.parse(File.read('sample.json'))
-schema = JSON.parse(File.read('data_marketplace_schema.json'))
-
-puts begin
-  JSON::Validator.validate!(schema, sample)
-rescue JSON::Schema::ValidationError => e
-  e.message
+def json_from(path)
+  JSON.parse(File.read(path))
 end
+
+def validate(sample:, schema:)
+  puts sample
+  puts schema
+  result = begin
+    JSON::Validator.validate!(json_from(schema), json_from(sample))
+  rescue JSON::Schema::ValidationError => e
+    e.message
+  end
+  puts "RESULT: #{result}"
+  puts "-------------------\n"
+end
+
+validate(
+  sample: 'samples/sample_core.json',
+  schema: 'schema/data_marketplace_core_schema.json'
+)
+
+validate(
+  sample: 'samples/sample_distribution.json',
+  schema: 'schema/data_marketplace_data_distribution_schema.json'
+)
+
+validate(
+  sample: 'samples/sample_data_service.json',
+  schema: 'schema/data_marketplace_data_service_schema.json'
+)

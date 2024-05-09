@@ -1,0 +1,139 @@
+{
+  "title": "Data Marketplace Metadata - core",
+  "description": "Data Marketplace Metadata schema for the core or minimum dataset",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "The full and formal name given to an information resource. A name given to the distribution.",
+      "type": "string"
+    },
+    "alternativeTitle": {
+      "description": "An alternative name used as a substitute or additional access point for an information resource.",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+    },
+    "summary": {
+      "description": "A short textual summary of the resource with a maximum length of 250 characters.",
+      "type": "string",
+      "maxLength": 250
+    },
+    "description": {
+      "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
+      "type": "string"
+    },
+    "keyword": {
+      "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "theme": {
+      "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contactPoint": {
+      "desciption": "Contact information",
+      "type": "object",
+      "properties": {
+        "contactName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "contactName",
+        "email"
+      ]
+    },
+    "creator": {
+      "description": "The business entity responsible for creating or compiling the original content of an information resource..",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publisher": {
+      "description": "The business entity responsible for making an information resource publicly available.",
+      "type": "string"
+    },
+    "securityClassification": {
+      "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
+      "enum": [
+        "OFFICIAL",
+        "SECRET",
+        "TOP_SECRET",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "identifier": {
+      "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
+      "type": "string"
+    },
+    "relatedResource": {
+      "description": "A resource that bears a close relationship to the described resource.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "DQ_RelatedResource": {
+      "description": "Does this data asset have a Data Quality Action Plan associated with it, consistent with the definition described in the Govt Data Quality Framework?",
+      "enum": [
+        "Yes",
+        "No"
+      ]
+    },
+    "serviceType": {
+      "description": "Type of the service",
+      "enum": [
+        "EVENT",
+        "REST",
+        "SOAP"
+      ]
+    },
+    "serviceStatus": {
+      "description": "The status of the resource in the context of a particular workflow process.",
+      "enum": [
+        "DISCOVERY",
+        "ALPHA",
+        "BETA",
+        "PRIVATE_BETA",
+        "PUBLIC_BETA",
+        "LIVE",
+        "DEPRECATED",
+        "WITHDRAWN"
+      ]
+    },
+    "endpointURL": {
+      "description": "The location where the item (file) being described can be found",
+      "type": "string"
+    },
+    "endpointDescription": {
+      "description": "A description of the services available via the end-points, including their operations, parameters etc.",
+      "type": "string"
+    },
+    "servesData": {
+      "description": "A collection of data that this data service can distribute.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "keyword",
+    "theme",
+    "contactPoint",
+    "publisher",
+    "securityClassification",
+    "identifier",
+    "DQ_RelatedResource"
+  ]
+}
