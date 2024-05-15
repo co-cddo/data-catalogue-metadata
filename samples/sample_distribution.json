@@ -1,15 +1,21 @@
 {
-  "title": "Demo ESDA",
+  "title": "Advance Passenger Information (API) ",
   "alternativeTitle": [
-    "Demo ESDA"
+    "Travel Data"
   ],
-  "summary": "This is a summary",
-  "description": "This is a description",
+  "summary": "Airline passenger travel data",
+  "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
   "keyword": [
-    "demo"
+    "Air travel",
+    "Passport",
+    "Airports",
+    "leaving UK",
+    "entering UK"
+
   ],
   "theme": [
-    "demo"
+    "Transport and infrastructure",
+    "Population and society"
   ],
   "contactPoint": {
     "contactName": "Rob Nichols",
@@ -18,9 +24,9 @@
   "creator": [
     "central-digital-and-data-office"
   ],
-  "publisher": "central-digital-and-data-office",
+  "publisher": "academy-for-social-justice",
   "securityClassification": "OFFICIAL",
-  "identifier": "abcefg123",
+  "identifier": "8d085327-21b6-4d8b-9705-88faad231d62",
   "relatedResource": [
     ""
   ],
