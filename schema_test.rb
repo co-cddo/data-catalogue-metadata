@@ -18,16 +18,21 @@ def validate(sample:, schema:)
 end
 
 validate(
+  sample: 'samples/sample_data_service.json',
+  schema: 'schema/data_marketplace_data_service_schema.json'
+)
+
+validate(
+  sample: 'samples/spreadsheet.json',
+  schema: 'schema/data_marketplace_dataset_schema.json'
+)
+
+validate(
   sample: 'samples/sample_core.json',
-  schema: 'schema/data_marketplace_core_schema.json'
+  schema: 'schema/data_marketplace_dataset_schema.json'
 )
 
 validate(
   sample: 'samples/sample_distribution.json',
-  schema: 'schema/data_marketplace_data_distribution_schema.json'
-)
-
-validate(
-  sample: 'samples/sample_data_service.json',
-  schema: 'schema/data_marketplace_data_service_schema.json'
+  schema: 'schema/data_marketplace_dataset_schema.json'
 )
