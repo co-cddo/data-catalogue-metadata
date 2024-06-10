@@ -1,5 +1,7 @@
 {
-  "title": "Data Marketplace Metadata - DataSet",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Marketplace Metadata - Dataset",
+  "$id": "Schemas/Dataset",
   "description": "Data Marketplace Metadata schema for a Dataset",
   "type": "object",
   "properties": {
@@ -190,7 +192,7 @@
   ],
   "schemas": {
     "distribution": {
-      "$id": "schema/distribution",
+      "$id": "schemas/distribution",
       "description": "A specific representation of a dataset.",
       "type": "object",
       "properties": {

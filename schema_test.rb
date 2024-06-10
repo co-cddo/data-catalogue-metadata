@@ -23,6 +23,16 @@ validate(
 )
 
 validate(
+  sample: 'samples/are_you_eligible.json',
+  schema: 'schema/data_marketplace_data_service_schema.json'
+)
+
+validate(
+  sample: 'samples/exam_results.json',
+  schema: 'schema/data_marketplace_data_service_schema.json'
+)
+
+validate(
   sample: 'samples/spreadsheet.json',
   schema: 'schema/data_marketplace_dataset_schema.json'
 )
