@@ -1,5 +1,7 @@
 {
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Data Marketplace Metadata - DataService",
+  "$id": "DataService",
   "description": "Data Marketplace Metadata schema for a Dataservice",
   "type": "object",
   "properties": {
@@ -145,6 +147,13 @@
     "servesData": {
       "description": "A collection of data that this data service can distribute.",
       "type": "string"
+    },
+    "servesDataset": {
+      "description": "A collection of datasets that this data service can distribute.",
+      "type": "array",
+      "items": {
+        "$ref": "schema/data_marketplace_dataset_schema.json"
+      }
     }
   },
   "required": [
@@ -155,7 +164,6 @@
     "contactPoint",
     "publisher",
     "securityClassification",
-    "identifier",
-    "DQ_RelatedResource"
+    "identifier"
   ]
 }
