@@ -29,16 +29,17 @@
   "updateFrequency": "freq:irregular",
   "licence": "",
   "accessRights": "INTERNAL",
-  "distribution": {
-    "title": "Google Sheet",
-    "@type": "dcat:Distribution",
-    "accessService": "path/to/sheet/in/google/sheets",
-    "identifier": "",
-    "modified": "2024-05-02",
-    "issued": "2024-05-02",
-    "licence": "",
-    "byteSize": 2045,
-    "mediaType": "application/vnd.google-apps.spreadsheet"
-  }
-
+  "distribution": [
+    {
+      "title": "Google Sheet",
+      "@type": "dcat:Distribution",
+      "accessService": "path/to/sheet/in/google/sheets",
+      "identifier": "",
+      "modified": "2024-05-02",
+      "issued": "2024-05-02",
+      "licence": "",
+      "byteSize": 2045,
+      "mediaType": "application/vnd.google-apps.spreadsheet"
+    }
+  ]
 }

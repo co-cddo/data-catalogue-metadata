@@ -1,11 +1,15 @@
 {
-  "title": "Data Marketplace Metadata - Data Distribution",
-  "description": "Data Marketplace Metadata schema for when a dataset has a distribution associated with it",
+  "title": "Data Marketplace Metadata - core",
+  "description": "Data Marketplace Metadata schema for the core or minimum dataset",
   "type": "object",
   "properties": {
     "title": {
-      "description": "The full and formal name given to an information resource.",
+      "description": "The full and formal name given to an information resource. A name given to the distribution.",
       "type": "string"
+    },
+    "@type": {
+      "description": "Should be a DCAT object type",
+      "enum": ["dcat:Dataset"]
     },
     "alternativeTitle": {
       "description": "An alternative name used as a substitute or additional access point for an information resource.",
@@ -84,29 +88,21 @@
         "type": "string"
       }
     },
-    "DQ_RelatedResource": {
-      "description": "Does this data asset have a Data Quality Action Plan associated with it, consistent with the definition described in the Govt Data Quality Framework?",
-      "enum": [
-        "Yes",
-        "No"
-      ]
-    },
     "version": {
-      "description": "The version indicator (name or identifier) of a resource.",
+      "description": "An incremental identifier used to track which version of the object is being used.",
       "type": "string"
     },
     "issued": {
-      "description": "The date on which an information resource was originally published or otherwise made publicly available for the first time.",
-      "type": "string",
-      "format": "date"
+      "description": "The date the data was issued.",
+      "$ref": "#/schemas/YYYY-MM-DD"
     },
     "modified": {
-      "description": "The date on which the content of an information resource is changed.",
+      "description": "The date on which the data changed.",
       "type": "string",
       "format": "date"
     },
     "created": {
-      "description": "The date on which the content of an information resource is created or compiled. ",
+      "description": "The date on which the data was created.",
       "type": "string",
       "format": "date"
     },
@@ -144,7 +140,33 @@
         "COMMERCIAL"
       ]
     },
+    "DQ_RelatedResource": {
+      "description": "Does this data asset have a Data Quality Action Plan associated with it, consistent with the definition described in the Govt Data Quality Framework?",
+      "enum": [
+        "Yes",
+        "No"
+      ]
+    },
     "distribution": {
+      "type": "array",
+      "items": {
+        "$ref": "#/schemas/distribution"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "keyword",
+    "theme",
+    "contactPoint",
+    "publisher",
+    "securityClassification",
+    "identifier"
+  ],
+  "schemas": {
+    "distribution": {
+      "$id": "schema/distribution",
       "description": "A specific representation of a dataset.",
       "type": "object",
       "properties": {
@@ -183,19 +205,13 @@
           "type": "string"
         }
       }
+    },
+    "YYYY-MM-DD": {
+      "description": "Date in format YYYY-MM-DD.",
+      "type": "string",
+      "pattern": "20\\d{2}\\-[0-1]\\d\\-[0-3]\\d"
     }
   },
-  "required": [
-    "title",
-    "description",
-    "keyword",
-    "theme",
-    "contactPoint",
-    "publisher",
-    "securityClassification",
-    "identifier",
-    "DQ_RelatedResource",
-    "accessRights"
-  ]
-}
 
+  "additionalProperties": false
+}

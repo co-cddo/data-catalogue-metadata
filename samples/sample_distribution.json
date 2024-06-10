@@ -38,7 +38,7 @@
   "updateFrequency": "freq:monthly",
   "licence": "https://osdatahub.os.uk/legal/termsConditions",
   "accessRights": "INTERNAL",
-  "distribution": {
+  "distribution": [{
     "title": "A distribution",
     "accessService": "http://example.com/service",
     "identifier": "8802aaf5-85b0-43a4-8b03-c0d01b0287be",
@@ -47,6 +47,5 @@
     "licence": "https://osdatahub.os.uk/legal/termsConditions",
     "byteSize": 2045,
     "mediaType": "text/csv "
-  }
-
+  }]
 }
