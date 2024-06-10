@@ -1,11 +1,12 @@
 {
-  "title": "Data Marketplace Metadata - core",
-  "description": "Data Marketplace Metadata schema for the core or minimum dataset",
+  "title": "Data Marketplace Metadata - DataSet",
+  "description": "Data Marketplace Metadata schema for a Dataset",
   "type": "object",
   "properties": {
     "title": {
       "description": "The full and formal name given to an information resource. A name given to the distribution.",
-      "type": "string"
+      "type": "string",
+      "maxLength": 200
     },
     "@type": {
       "description": "Should be a DCAT object type",
@@ -15,7 +16,8 @@
       "description": "An alternative name used as a substitute or additional access point for an information resource.",
       "type": "array",
       "items": {
-       "type": "string"
+       "type": "string",
+      "maxLength": 200
       }
     },
     "summary": {
@@ -25,20 +27,36 @@
     },
     "description": {
       "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
-      "type": "string"
+      "type": "string",
+      "maxLength": 4096
     },
     "keyword": {
       "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "maxLength": 75
       }
     },
     "theme": {
       "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
       "type": "array",
       "items": {
-        "type": "string"
+        "enum": [
+          "Agriculture, fisheries and forestry",
+          "Business, economics and finance",
+          "Crime and justice",
+          "Culture, leisure and sport",
+          "Education",
+          "Energy",
+          "Environment and nature",
+          "Geography",
+          "Government and public sector",
+          "Health and care",
+          "Population and society",
+          "Science and technology",
+          "Transport and infrastructure"
+        ]
       }
     },
     "contactPoint": {
@@ -46,10 +64,12 @@
       "type": "object",
       "properties": {
         "contactName": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 50
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
         }
       },
       "required": [
@@ -61,12 +81,14 @@
       "description": "The business entity responsible for creating or compiling the original content of an information resource..",
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "maxLength": 75
       }
     },
     "publisher": {
       "description": "The business entity responsible for making an information resource publicly available.",
-      "type": "string"
+      "type": "string",
+      "maxLength": 75
     },
     "securityClassification": {
       "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
@@ -79,18 +101,21 @@
     },
     "identifier": {
       "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
-      "type": "string"
+      "type": "string",
+      "maxLength": 50
     },
     "relatedResource": {
       "description": "A resource that bears a close relationship to the described resource.",
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "maxLength": 250
       }
     },
     "version": {
       "description": "An incremental identifier used to track which version of the object is being used.",
-      "type": "string"
+      "type": "string",
+      "maxLength": 15
     },
     "issued": {
       "description": "The date the data was issued.",
@@ -98,13 +123,11 @@
     },
     "modified": {
       "description": "The date on which the data changed.",
-      "type": "string",
-      "format": "date"
+      "$ref": "#/schemas/YYYY-MM-DD"
     },
     "created": {
       "description": "The date on which the data was created.",
-      "type": "string",
-      "format": "date"
+      "$ref": "#/schemas/YYYY-MM-DD"
     },
     "updateFrequency": {
       "description": "",
@@ -130,7 +153,8 @@
     },
     "licence": {
       "description": "Reference to the legal document outlining access and usage rights for an information resource.",
-      "type": "string"
+      "type": "string",
+      "maxLength": 250
     },
     "accessRights": {
       "description": "A rights statement that concerns how the distribution is accessed.",
@@ -172,37 +196,40 @@
       "properties": {
         "title": {
           "description": "A name given to the distribution.",
-          "type": "string"
+          "type": "string",
+          "maxLength": 250
         },
         "accessService": {
           "description": "A data service that gives access to the distribution of the dataset.",
-          "type": "string"
+          "type": "string",
+          "maxLength": 250
         },
         "identifier": {
           "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
-          "type": "string"
+          "type": "string",
+          "maxLength": 75
         },
         "modified": {
           "description": "The date on which the distribution is changed.",
-          "type": "string",
-          "format": "date"
+          "$ref": "#/schemas/YYYY-MM-DD"
         },
         "issued": {
           "description": "The date on which a distribution was originally published",
-          "type": "string",
-          "format": "date"
+          "$ref": "#/schemas/YYYY-MM-DD"
         },
         "licence": {
           "description": "A legal document under which the distribution is made available.",
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "byteSize": {
           "description": "The size of the distribution in bytes.",
           "type": "integer"
         },
         "mediaType": {
-          "description": "",
-          "type": "string"
+          "description": "The IANA media type, or file format, type, or extention, of the distribution file.",
+          "type": "string",
+          "maxLength": 50
         }
       }
     },

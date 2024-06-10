@@ -8,6 +8,7 @@ GEM
     public_suffix (5.0.5)
 
 PLATFORMS
+  arm64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
