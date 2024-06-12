@@ -30,7 +30,6 @@
   "relatedResource": [
     ""
   ],
-  "DQ_RelatedResource": "Yes",
   "serviceType": "REST",
   "serivceStatus": "BETA",
   "endpointURL": "http://example.com/service/api",

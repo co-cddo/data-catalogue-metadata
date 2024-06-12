@@ -5,57 +5,12 @@
   "description": "Data Marketplace Metadata schema for a Dataservice",
   "type": "object",
   "properties": {
-    "title": {
-      "description": "The full and formal name given to an information resource. A name given to the distribution.",
-      "type": "string",
-      "maxLength": 200
-    },
     "alternativeTitle": {
       "description": "An alternative name used as a substitute or additional access point for an information resource.",
       "type": "array",
       "items": {
         "type": "string",
         "maxLength": 200
-      }
-    },
-    "summary": {
-      "description": "A short textual summary of the resource with a maximum length of 250 characters.",
-      "type": "string",
-      "maxLength": 250
-    },
-    "description": {
-      "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
-      "type": "string",
-      "maxLength": 4096
-    },
-    "keyword": {
-      "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
-      "type": "array",
-      "items": {
-        "type": "string",
-        "maxLength": 75
-      }
-    },
-    "theme": {
-      "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
-      "type": "array",
-      "type": "array",
-      "items": {
-        "enum": [
-          "Agriculture, fisheries and forestry",
-          "Business, economics and finance",
-          "Crime and justice",
-          "Culture, leisure and sport",
-          "Education",
-          "Energy",
-          "Environment and nature",
-          "Geography",
-          "Government and public sector",
-          "Health and care",
-          "Population and society",
-          "Science and technology",
-          "Transport and infrastructure"
-        ]
       }
     },
     "contactPoint": {
@@ -80,10 +35,45 @@
       }
       }
     },
+    "description": {
+      "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
+      "type": "string",
+      "maxLength": 4096
+    },
+    "endpointDescription": {
+      "description": "A description of the services available via the end-points, including their operations, parameters etc.",
+      "type": "string",
+      "maxLength": 250
+    },
+    "endpointURL": {
+      "description": "The location where the item (file) being described can be found",
+      "type": "string"
+    },
+    "identifier": {
+      "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
+      "type": "string",
+      "maxLength": 50
+    },
+    "keyword": {
+      "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 75
+      }
+    },
     "publisher": {
       "description": "The business entity responsible for making an information resource publicly available.",
       "type": "string",
         "maxLength": 75
+    },
+    "relatedResource": {
+      "description": "A resource that bears a close relationship to the described resource.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 250
+      }
     },
     "securityClassification": {
       "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
@@ -94,33 +84,16 @@
         "NOT_APPLICABLE"
       ]
     },
-    "identifier": {
-      "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
-      "type": "string",
-      "maxLength": 50
+    "servesData": {
+      "description": "A collection of data that this data service can distribute.",
+      "type": "string"
     },
-    "relatedResource": {
-      "description": "A resource that bears a close relationship to the described resource.",
+    "servesDataset": {
+      "description": "A collection of datasets that this data service can distribute.",
       "type": "array",
       "items": {
-        "type": "string",
-        "maxLength": 250
+        "$ref": "schema/data_marketplace_dataset_schema.json"
       }
-    },
-    "DQ_RelatedResource": {
-      "description": "Does this data asset have a Data Quality Action Plan associated with it, consistent with the definition described in the Govt Data Quality Framework?",
-      "enum": [
-        "Yes",
-        "No"
-      ]
-    },
-    "serviceType": {
-      "description": "Type of the service",
-      "enum": [
-        "EVENT",
-        "REST",
-        "SOAP"
-      ]
     },
     "serviceStatus": {
       "description": "The status of the resource in the context of a particular workflow process.",
@@ -135,35 +108,55 @@
         "WITHDRAWN"
       ]
     },
-    "endpointURL": {
-      "description": "The location where the item (file) being described can be found",
-      "type": "string"
+    "serviceType": {
+      "description": "Type of the service",
+      "enum": [
+        "EVENT",
+        "REST",
+        "SOAP"
+      ]
     },
-    "endpointDescription": {
-      "description": "A description of the services available via the end-points, including their operations, parameters etc.",
+    "summary": {
+      "description": "A short textual summary of the resource with a maximum length of 250 characters.",
       "type": "string",
       "maxLength": 250
     },
-    "servesData": {
-      "description": "A collection of data that this data service can distribute.",
-      "type": "string"
-    },
-    "servesDataset": {
-      "description": "A collection of datasets that this data service can distribute.",
+    "theme": {
+      "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
+      "type": "array",
       "type": "array",
       "items": {
-        "$ref": "schema/data_marketplace_dataset_schema.json"
+        "enum": [
+          "Agriculture, fisheries and forestry",
+          "Business, economics and finance",
+          "Crime and justice",
+          "Culture, leisure and sport",
+          "Education",
+          "Energy",
+          "Environment and nature",
+          "Geography",
+          "Government and public sector",
+          "Health and care",
+          "Population and society",
+          "Science and technology",
+          "Transport and infrastructure"
+        ]
       }
+    },
+    "title": {
+      "description": "The full and formal name given to an information resource. A name given to the distribution.",
+      "type": "string",
+      "maxLength": 200
     }
   },
   "required": [
-    "title",
-    "description",
-    "keyword",
-    "theme",
     "contactPoint",
+    "description",
+    "identifier",
+    "keyword",
     "publisher",
     "securityClassification",
-    "identifier"
+    "theme",
+    "title"
   ]
 }
