@@ -6,9 +6,9 @@ The repository contains a JSON schema that can be used to validata metadata reco
 Running locally
 ---------------
 
-The schema is defined at data_marketplace_schema.json
+The schema are defined in /schema
 
-A Ruby script is provided that loads the schema and a sample JSON object, and attempts to validate the object against the schema.
+A Ruby script is provided that loads the schema and a sample JSON objects, and attempts to validate the objects against the schema.
 
 To use the script, first run `bundle` to install the dependencies, and then run the script using:
 
