@@ -5,14 +5,17 @@
   "description": "Data Marketplace Metadata schema for a Dataset",
   "type": "object",
   "properties": {
-    "title": {
-      "description": "The full and formal name given to an information resource. A name given to the distribution.",
-      "type": "string",
-      "maxLength": 200
-    },
     "@type": {
       "description": "Should be a DCAT object type",
       "enum": ["dcat:Dataset"]
+    },
+    "accessRights": {
+      "description": "A rights statement that concerns how the distribution is accessed.",
+      "enum": [
+        "INTERNAL",
+        "OPEN",
+        "COMMERCIAL"
+      ]
     },
     "alternativeTitle": {
       "description": "An alternative name used as a substitute or additional access point for an information resource.",
@@ -22,15 +25,55 @@
       "maxLength": 200
       }
     },
-    "summary": {
-      "description": "A short textual summary of the resource with a maximum length of 250 characters.",
-      "type": "string",
-      "maxLength": 250
+    "contactPoint": {
+      "desciption": "Contact information",
+      "type": "object",
+      "properties": {
+        "contactName": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "email": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+        }
+      },
+      "required": [
+        "contactName",
+        "email"
+      ]
+    },
+    "created": {
+      "description": "The date on which the data was created.",
+      "$ref": "#/schemas/YYYY-MM-DD"
+    },
+    "creator": {
+      "description": "The business entity responsible for creating or compiling the original content of an information resource..",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 75
+      }
     },
     "description": {
       "description": "A concise narrative of the content of an information resource. A free-text account of the distribution.",
       "type": "string",
       "maxLength": 4096
+    },
+    "distribution": {
+      "type": "array",
+      "items": {
+        "$ref": "#/schemas/distribution"
+      }
+    },
+    "identifier": {
+      "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
+      "type": "string",
+      "maxLength": 50
+    },
+    "issued": {
+      "description": "The date the data was issued.",
+      "$ref": "#/schemas/YYYY-MM-DD"
     },
     "keyword": {
       "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
@@ -39,6 +82,42 @@
         "type": "string",
         "maxLength": 75
       }
+    },
+    "licence": {
+      "description": "Reference to the legal document outlining access and usage rights for an information resource.",
+      "type": "string",
+      "maxLength": 250
+    },
+    "modified": {
+      "description": "The date on which the data changed.",
+      "$ref": "#/schemas/YYYY-MM-DD"
+    },
+    "publisher": {
+      "description": "The business entity responsible for making an information resource publicly available.",
+      "type": "string",
+      "maxLength": 75
+    },
+    "relatedResource": {
+      "description": "A resource that bears a close relationship to the described resource.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 250
+      }
+    },
+    "securityClassification": {
+      "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
+      "enum": [
+        "OFFICIAL",
+        "SECRET",
+        "TOP_SECRET",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "summary": {
+      "description": "A short textual summary of the resource with a maximum length of 250 characters.",
+      "type": "string",
+      "maxLength": 250
     },
     "theme": {
       "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
@@ -61,75 +140,10 @@
         ]
       }
     },
-    "contactPoint": {
-      "desciption": "Contact information",
-      "type": "object",
-      "properties": {
-        "contactName": {
-          "type": "string",
-          "maxLength": 50
-        },
-        "email": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
-        }
-      },
-      "required": [
-        "contactName",
-        "email"
-      ]
-    },
-    "creator": {
-      "description": "The business entity responsible for creating or compiling the original content of an information resource..",
-      "type": "array",
-      "items": {
-        "type": "string",
-        "maxLength": 75
-      }
-    },
-    "publisher": {
-      "description": "The business entity responsible for making an information resource publicly available.",
+    "title": {
+      "description": "The full and formal name given to an information resource. A name given to the distribution.",
       "type": "string",
-      "maxLength": 75
-    },
-    "securityClassification": {
-      "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
-      "enum": [
-        "OFFICIAL",
-        "SECRET",
-        "TOP_SECRET",
-        "NOT_APPLICABLE"
-      ]
-    },
-    "identifier": {
-      "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
-      "type": "string",
-      "maxLength": 50
-    },
-    "relatedResource": {
-      "description": "A resource that bears a close relationship to the described resource.",
-      "type": "array",
-      "items": {
-        "type": "string",
-        "maxLength": 250
-      }
-    },
-    "version": {
-      "description": "An incremental identifier used to track which version of the object is being used.",
-      "type": "string",
-      "maxLength": 15
-    },
-    "issued": {
-      "description": "The date the data was issued.",
-      "$ref": "#/schemas/YYYY-MM-DD"
-    },
-    "modified": {
-      "description": "The date on which the data changed.",
-      "$ref": "#/schemas/YYYY-MM-DD"
-    },
-    "created": {
-      "description": "The date on which the data was created.",
-      "$ref": "#/schemas/YYYY-MM-DD"
+      "maxLength": 200
     },
     "updateFrequency": {
       "description": "",
@@ -153,42 +167,21 @@
         "freq:irregular"
       ]
     },
-    "licence": {
-      "description": "Reference to the legal document outlining access and usage rights for an information resource.",
+    "version": {
+      "description": "An incremental identifier used to track which version of the object is being used.",
       "type": "string",
-      "maxLength": 250
-    },
-    "accessRights": {
-      "description": "A rights statement that concerns how the distribution is accessed.",
-      "enum": [
-        "INTERNAL",
-        "OPEN",
-        "COMMERCIAL"
-      ]
-    },
-    "DQ_RelatedResource": {
-      "description": "Does this data asset have a Data Quality Action Plan associated with it, consistent with the definition described in the Govt Data Quality Framework?",
-      "enum": [
-        "Yes",
-        "No"
-      ]
-    },
-    "distribution": {
-      "type": "array",
-      "items": {
-        "$ref": "#/schemas/distribution"
-      }
+      "maxLength": 15
     }
   },
   "required": [
-    "title",
-    "description",
-    "keyword",
-    "theme",
     "contactPoint",
+    "description",
+    "identifier",
+    "keyword",
     "publisher",
     "securityClassification",
-    "identifier"
+    "theme",
+    "title"
   ],
   "schemas": {
     "distribution": {
@@ -196,24 +189,19 @@
       "description": "A specific representation of a dataset.",
       "type": "object",
       "properties": {
-        "title": {
-          "description": "A name given to the distribution.",
-          "type": "string",
-          "maxLength": 250
-        },
         "accessService": {
           "description": "A data service that gives access to the distribution of the dataset.",
           "type": "string",
           "maxLength": 250
         },
+        "byteSize": {
+          "description": "The size of the distribution in bytes.",
+          "type": "integer"
+        },
         "identifier": {
           "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
           "type": "string",
           "maxLength": 75
-        },
-        "modified": {
-          "description": "The date on which the distribution is changed.",
-          "$ref": "#/schemas/YYYY-MM-DD"
         },
         "issued": {
           "description": "The date on which a distribution was originally published",
@@ -224,14 +212,19 @@
           "type": "string",
           "maxLength": 100
         },
-        "byteSize": {
-          "description": "The size of the distribution in bytes.",
-          "type": "integer"
-        },
         "mediaType": {
           "description": "The IANA media type, or file format, type, or extention, of the distribution file.",
           "type": "string",
           "maxLength": 50
+        },
+        "modified": {
+          "description": "The date on which the distribution is changed.",
+          "$ref": "#/schemas/YYYY-MM-DD"
+        },
+        "title": {
+          "description": "A name given to the distribution.",
+          "type": "string",
+          "maxLength": 250
         }
       }
     },
@@ -241,6 +234,5 @@
       "pattern": "20\\d{2}\\-[0-1]\\d\\-[0-3]\\d"
     }
   },
-
   "additionalProperties": false
 }
