@@ -129,6 +129,11 @@
       "type": "string",
       "maxLength": 250
     },
+    "supplierIdentifier": {
+      "supplierIdentifier": "The indentifier providered by the metadata supplier. The indentifier used to identify the dataset group in their systems.",
+      "type": "string",
+      "maxLength": 50
+    },
     "theme": {
       "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
       "type": "array",

@@ -26,7 +26,7 @@
     ""
   ],
   "serviceType": "REST",
-  "serivceStatus": "BETA",
+  "serviceStatus": "BETA",
   "endpointURL": "http://example.com/service/api",
   "endpointDescription": "A service API",
   "servesDataset": [
