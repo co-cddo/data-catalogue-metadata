@@ -46,3 +46,13 @@ validate(
   sample: 'samples/sample_distribution.json',
   schema: 'schema/data_marketplace_dataset_schema.json'
 )
+
+validate(
+  sample: 'samples/group_of_datasets.json',
+  schema: 'schema/data_marketplace_dataset_group_schema.json'
+)
+
+validate(
+  sample: 'samples/group_of_dataset_references.json',
+  schema: 'schema/data_marketplace_dataset_group_schema.json'
+)
