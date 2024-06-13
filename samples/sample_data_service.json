@@ -31,8 +31,9 @@
     ""
   ],
   "serviceType": "REST",
-  "serivceStatus": "BETA",
+  "serviceStatus": "BETA",
   "endpointURL": "http://example.com/service/api",
   "endpointDescription": "A service API",
-  "servesData": "A dataset"
+  "servesData": "A dataset",
+  "supplierIdentifier": "24bc0cbd-d3b0-4899-b6e7-2ccd40cf5c9e"
 }

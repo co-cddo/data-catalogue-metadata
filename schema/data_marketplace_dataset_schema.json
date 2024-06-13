@@ -114,6 +114,11 @@
         "NOT_APPLICABLE"
       ]
     },
+    "supplierIdentifier": {
+      "supplierIdentifier": "The indentifier providered by the metadata supplier. The indentifier used to identify the dataset in their systems.",
+      "type": "string",
+      "maxLength": 50
+    },
     "summary": {
       "description": "A short textual summary of the resource with a maximum length of 250 characters.",
       "type": "string",

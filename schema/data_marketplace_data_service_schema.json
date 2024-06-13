@@ -5,6 +5,10 @@
   "description": "Data Marketplace Metadata schema for a Dataservice",
   "type": "object",
   "properties": {
+    "@type": {
+      "description": "Should be a DCAT object type",
+      "enum": ["dcat:DataService"]
+    },
     "alternativeTitle": {
       "description": "An alternative name used as a substitute or additional access point for an information resource.",
       "type": "array",
@@ -25,14 +29,14 @@
           "type": "string",
           "pattern": "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
         }
-      },
+      }
+    },
     "creator": {
       "description": "The business entity responsible for creating or compiling the original content of an information resource..",
       "type": "array",
       "items": {
         "type": "string",
         "maxLength": 75
-      }
       }
     },
     "description": {
@@ -121,6 +125,11 @@
       "type": "string",
       "maxLength": 250
     },
+    "supplierIdentifier": {
+      "supplierIdentifier": "The indentifier providered by the metadata supplier. The indentifier used to identify the dataset service in their systems.",
+      "type": "string",
+      "maxLength": 50
+    },
     "theme": {
       "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
       "type": "array",
@@ -158,5 +167,6 @@
     "securityClassification",
     "theme",
     "title"
-  ]
+  ],
+  "additionalProperties": false
 }
