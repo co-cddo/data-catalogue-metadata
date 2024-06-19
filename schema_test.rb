@@ -28,6 +28,11 @@ validate(
 )
 
 validate(
+  sample: 'samples/are_you_eligible_by_reference.json',
+  schema: 'schema/data_marketplace_data_service_schema.json'
+)
+
+validate(
   sample: 'samples/exam_results.json',
   schema: 'schema/data_marketplace_data_service_schema.json'
 )

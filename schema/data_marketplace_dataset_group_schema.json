@@ -94,7 +94,7 @@
       "items": {
         "oneOf": [
           { "$ref": "schema/data_marketplace_dataset_schema.json" },
-          { "type": "string", "maxLength": 50 }
+          { "type": "string", "maxLength": 250 }
         ]
       }
     },
