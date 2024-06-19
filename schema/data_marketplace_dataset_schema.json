@@ -220,7 +220,7 @@
         "mediaType": {
           "description": "The IANA media type, or file format, type, or extention, of the distribution file.",
           "type": "string",
-          "maxLength": 50
+          "maxLength": 100
         },
         "modified": {
           "description": "The date on which the distribution is changed.",
