@@ -1,0 +1,18 @@
+{
+  "message": "Validation failure",
+  "code": "401",
+  "errors": [
+    {
+      "type": "http://example.com/docs/errors/exceeded-max-length",
+      "detail": "The attribute 'summary' is too long. It should be less than 250 characters",
+      "instance": "identifier:f58ce342-d3cc-4a13-bba4-ac958c39397b",
+      "location": "/summary"
+    },
+    {
+      "type": "http://example.com/docs/errors/type-integer",
+      "detail": "The distribution byteSize of '1Mb' is not an integer",
+      "instance": "identifier:f58ce342-d3cc-4a13-bba4-ac958c39397b",
+      "location": "/distribution/byteSize"
+    }
+  ]
+}

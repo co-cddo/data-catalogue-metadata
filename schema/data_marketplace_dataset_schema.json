@@ -21,8 +21,8 @@
       "description": "An alternative name used as a substitute or additional access point for an information resource.",
       "type": "array",
       "items": {
-       "type": "string",
-      "maxLength": 200
+        "type": "string",
+        "maxLength": 200
       }
     },
     "contactPoint": {
