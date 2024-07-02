@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Data Marketplace Metadata - Dataset",
-  "$id": "Schemas/Dataset",
+  "title": "Data Marketplace Metadata - Error",
+  "$id": "Schemas/Error",
   "description": "Data Marketplace schema for an error object",
   "type": "object",
   "properties": {
@@ -14,34 +14,7 @@
       "description": "An array of the specific error details",
       "type": "array",
       "items": {
-        "description": "Error details object",
-        "type": "object",
-        "properties": {
-          "detail": {
-            "description": "Human readable description of the details of the error",
-            "type": "string",
-            "maxLength": 200
-          },
-          "instance": {
-            "description": "An identifier of the instance of the object where the error occured",
-            "type": "string",
-            "maxLength": 100
-          },
-          "location": {
-            "description": "A pointer to the location of the error within the instance.",
-            "type": "string",
-            "maxLength": 100
-          },
-          "type": {
-            "description": "A systematic identifier for the type of error.",
-            "type": "string",
-            "maxLength": 100
-          }
-        },
-        "requires": [
-          "detail",
-          "type"
-        ]
+        "$ref": "#/schemas/innerError"
       }
     },
     "message": {
@@ -55,5 +28,50 @@
     "code",
     "errors"
   ],
+  "schemas": {
+    "innerError": {
+      "$id": "schema/innerError",
+      "description": "Error details object",
+      "type": "object",
+      "properties": {
+        "detail": {
+          "description": "Human readable description of the details of the error",
+          "type": "string",
+          "maxLength": 200
+        },
+        "errors": {
+          "description": "An array of inner errors",
+          "type": "array",
+          "items": {
+            "$ref": "#/schemas/innerError"
+          }
+        },
+        "instance": {
+          "description": "An identifier of the instance of the object where the error occured",
+          "type": "string",
+          "maxLength": 100
+        },
+        "location": {
+          "description": "A pointer to the location of the error within the instance.",
+          "type": "string",
+          "maxLength": 100
+        },
+        "severity": {
+          "description": "Severity of error. Could be a level or description.",
+          "type": "string",
+          "maxLength": 100
+        },
+        "type": {
+          "description": "A systematic identifier for the type of error.",
+          "type": "string",
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "detail",
+        "type"
+      ]
+    }
+  },
   "additionalProperties": false
 }

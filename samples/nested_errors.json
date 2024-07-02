@@ -1,0 +1,21 @@
+{
+  "message": "Validation failure",
+  "code": "401",
+  "errors": [
+    {
+      "type": "http://example.com/docs/errors/validation",
+      "detail": "The item 'Acme Object' has failed validation",
+      "instance": "identifier:f58ce342-d3cc-4a13-bba4-ac958c39397b",
+      "location": "/instances/[2]",
+      "errors": [
+        {
+          "type": "http://example.com/docs/errors/type-integer",
+          "detail": "The distribution byteSize of '1Mb' is not an integer",
+          "instance": "identifier:f58ce342-d3cc-4a13-bba4-ac958c39397b",
+          "location": "/instances/[2]/distribution/byteSize",
+          "severity": "3"
+        }
+      ]
+    }
+  ]
+}

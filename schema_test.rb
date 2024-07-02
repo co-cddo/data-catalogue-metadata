@@ -66,3 +66,8 @@ validate(
   sample: 'samples/error.json',
   schema: 'schema/data_marketplace_error_schema.json'
 )
+
+validate(
+  sample: 'samples/nested_errors.json',
+  schema: 'schema/data_marketplace_error_schema.json'
+)
