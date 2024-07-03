@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Data Marketplace Metadata - Dataset Group",
-  "$id": "Schemas/DatasetGroup",
-  "description": "Data Marketplace Metadata schema for a Dataset Group",
+  "title": "Data Marketplace Metadata - Resource Group",
+  "$id": "Schemas/ResourceGroup",
+  "description": "Data Marketplace Metadata schema for a Resource Group",
   "type": "object",
   "properties": {
     "@type": {
       "description": "Should be a DCAT object type",
-      "enum": ["DatasetGroup"]
+      "enum": ["ResourceGroup"]
     },
     "accessRights": {
       "description": "A rights statement that concerns how the distribution is accessed.",
@@ -26,7 +26,7 @@
       }
     },
     "contactPoint": {
-      "desciption": "Contact information",
+      "description": "Contact information",
       "type": "object",
       "properties": {
         "contactName": {
@@ -89,11 +89,12 @@
       "maxLength": 250
     },
     "member": {
-      "description": "List of the Datasets within the group defined by this object. It can contain an array of datasets or references to the datasets",
+      "description": "List of the Resources within the group defined by this object. It can contain an array of datasets, data services or references to those resources",
       "type": "array",
       "items": {
-        "oneOf": [
-          { "$ref": "schema/data_marketplace_dataset_schema.json" },
+        "anyOf": [
+          { "$ref": "./../schema/data_marketplace_dataset_schema.json" },
+          { "$ref": "./../schema/data_marketplace_data_service_schema.json" },
           { "type": "string", "maxLength": 250 }
         ]
       }
@@ -130,7 +131,7 @@
       "maxLength": 250
     },
     "supplierIdentifier": {
-      "supplierIdentifier": "The indentifier providered by the metadata supplier. The indentifier used to identify the dataset group in their systems.",
+      "supplierIdentifier": "The indentifier providered by the metadata supplier. The indentifier used to identify the resource group in their systems.",
       "type": "string",
       "maxLength": 50
     },
@@ -202,11 +203,11 @@
   "schemas": {
     "distribution": {
       "$id": "schemas/distribution",
-      "description": "A specific representation of a dataset.",
+      "description": "A specific representation of a resource group.",
       "type": "object",
       "properties": {
         "accessService": {
-          "description": "A data service that gives access to the distribution of the dataset.",
+          "description": "A data service that gives access to the distribution of the resource group. This should be reference to a DataService.",
           "type": "string",
           "maxLength": 250
         },
