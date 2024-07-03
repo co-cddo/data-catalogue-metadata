@@ -213,7 +213,8 @@
         },
         "byteSize": {
           "description": "The size of the distribution in bytes.",
-          "type": "integer"
+          "type": "integer",
+          "format": "int64"
         },
         "identifier": {
           "description": "A unique number, code, or reference value assigned to an information resource within a given context.",
