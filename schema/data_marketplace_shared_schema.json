@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Marketplace Metadata - Shared schema",
+  "schemas": {
+    "dateOrDateTime":{
+      "anyOf": [
+        { "$ref": "#/schemas/YYYY-MM-DD" },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "YYYY-MM-DD": {
+      "description": "Date in format YYYY-MM-DD.",
+      "type": "string",
+      "pattern": "^20\\d{2}\\-[0-1]\\d\\-[0-3]\\d$"
+    }
+  }
+}
