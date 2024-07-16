@@ -39,13 +39,6 @@
           "type": "string",
           "maxLength": 200
         },
-        "errors": {
-          "description": "An array of inner errors",
-          "type": "array",
-          "items": {
-            "$ref": "#/schemas/innerError"
-          }
-        },
         "instance": {
           "description": "An identifier of the instance of the object where the error occured",
           "type": "string",
@@ -70,7 +63,8 @@
       "required": [
         "detail",
         "type"
-      ]
+      ],
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
