@@ -45,7 +45,7 @@
     },
     "created": {
       "description": "The date on which the data was created.",
-      "$ref": "#/schemas/YYYY-MM-DD"
+      "$ref": "./../schema/data_marketplace_shared_schema.json#/schemas/dateOrDateTime"
     },
     "creator": {
       "description": "The business entity responsible for creating or compiling the original content of an information resource..",
@@ -73,7 +73,7 @@
     },
     "issued": {
       "description": "The date the data was issued.",
-      "$ref": "#/schemas/YYYY-MM-DD"
+      "$ref": "./../schema/data_marketplace_shared_schema.json#/schemas/dateOrDateTime"
     },
     "keyword": {
       "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
@@ -101,7 +101,7 @@
     },
     "modified": {
       "description": "The date on which the data changed.",
-      "$ref": "#/schemas/YYYY-MM-DD"
+      "$ref": "./../schema/data_marketplace_shared_schema.json#/schemas/dateOrDateTime"
     },
     "publisher": {
       "description": "The business entity responsible for making an information resource publicly available.",
@@ -245,11 +245,6 @@
           "maxLength": 250
         }
       }
-    },
-    "YYYY-MM-DD": {
-      "description": "Date in format YYYY-MM-DD.",
-      "type": "string",
-      "pattern": "20\\d{2}\\-[0-1]\\d\\-[0-3]\\d"
     }
   },
   "additionalProperties": false

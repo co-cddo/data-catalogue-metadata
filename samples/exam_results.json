@@ -62,7 +62,7 @@
           "@type": "dcat:Distribution",
           "accessService": "8d085327-21b6-4d8b-9705-88faad231d63",
           "identifier": "year/2022",
-          "modified": "2024-05-02",
+          "modified": "2024-05-02T16:09:53+00:00",
           "issued": "2024-05-02",
           "licence": "",
           "byteSize": 2045,
