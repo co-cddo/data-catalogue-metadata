@@ -18,51 +18,32 @@ def validate(sample:, schema:)
 end
 
 validate(
-  sample: 'samples/sample_data_service.json',
-  schema: 'schema/data_marketplace_data_service_schema.json'
+  sample: 'samples/dataset.json',
+  schema: 'schema/catalogued_resource_schema.json'
 )
 
 validate(
-  sample: 'samples/are_you_eligible.json',
-  schema: 'schema/data_marketplace_data_service_schema.json'
+  sample: 'samples/data_service.json',
+  schema: 'schema/catalogued_resource_schema.json'
 )
 
 validate(
-  sample: 'samples/are_you_eligible_by_reference.json',
-  schema: 'schema/data_marketplace_data_service_schema.json'
+  sample: 'samples/dataset.json',
+  schema: 'schema/dataset_schema.json'
 )
 
 validate(
-  sample: 'samples/exam_results.json',
-  schema: 'schema/data_marketplace_data_service_schema.json'
+  sample: 'samples/data_service.json',
+  schema: 'schema/data_service_schema.json'
 )
 
 validate(
-  sample: 'samples/spreadsheet.json',
-  schema: 'schema/data_marketplace_dataset_schema.json'
+  sample: 'samples/data_group.json',
+  schema: 'schema/data_group_schema.json'
 )
 
 validate(
-  sample: 'samples/sample_core.json',
-  schema: 'schema/data_marketplace_dataset_schema.json'
+  sample: 'samples/data_share.json',
+  schema: 'schema/data_share_schema.json'
 )
 
-validate(
-  sample: 'samples/sample_distribution.json',
-  schema: 'schema/data_marketplace_dataset_schema.json'
-)
-
-validate(
-  sample: 'samples/group_of_datasets.json',
-  schema: 'schema/data_marketplace_resource_group_schema.json'
-)
-
-validate(
-  sample: 'samples/group_of_dataset_references.json',
-  schema: 'schema/data_marketplace_resource_group_schema.json'
-)
-
-validate(
-  sample: 'samples/error.json',
-  schema: 'schema/data_marketplace_error_schema.json'
-)

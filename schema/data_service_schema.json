@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Service Schema",
+  "$id": "schemas/dataService",
+  "description": "Metadata schema for a Data Service",
+  "type": "object",
+  "$ref": "./../schema/catalogued_resource_schema.json",
+  "properties": {
+    "apiType": {
+      "description": "The API type.",
+      "type": "string",
+      "enum": [
+        "REST",
+        "SOAP",
+        "Event",
+        "RPC",
+        "GraphQL"
+      ]
+    },
+    "endpointDescription": {
+      "description": "A concise narrative of the content of end point service.",
+      "type": "string",
+      "maxLength": 4096
+    },
+    "endpointURL": {
+      "description": "A concise narrative of the content of end point service.",
+      "type": "string",
+      "maxLength": 250
+    },
+    "servesDataset": {
+      "description": "A collection of datasets, or the references to the datasets, that this data service can distribute.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 250
+      }
+    },
+    "serviceType": {
+      "description": "The Service type.",
+      "type": "string",
+      "enum": [
+        "Bulk",
+        "Transactional",
+        "Information"
+      ]
+    }
+  },
+  "required": [
+    "apiType",
+    "endpointDescription",
+    "servesDataset",
+    "serviceType"
+  ],
+  "unevaluatedProperties": false
+}
+

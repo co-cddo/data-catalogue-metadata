@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Dataset schema",
+  "$id": "schemas/dataset",
+  "description": "Metadata schema for a Dataset",
+  "type": "object",
+  "$ref": "./../schema/catalogued_resource_schema.json",
+  "properties": {
+    "distribution": {
+      "description": "A collection of distributions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "accessService": {
+            "description": "A reference to the service that provided the data",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 50
+            }
+          },
+          "downloadURL": {
+            "description": "The location from which the Dataset can be downloaded",
+            "type": "string",
+            "maxLength": 250
+          },
+          "mediaType": {
+            "description": "The IANA media type, or file format, type, or extention, of the distribution file.",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 100
+            }
+          }
+        },
+        "required": [
+          "mediaType"
+        ]
+      }
+    },
+    "issued": {
+      "description": "The date the data was issued.",
+      "$ref": "./../schema/shared_schema.json#/schemas/dateOrDateTime"
+    },
+    "updateFrequency": {
+      "description": "The schedule for how often the data is updated",
+      "type": "string"
+    }
+  },
+  "unevaluatedProperties": false
+}

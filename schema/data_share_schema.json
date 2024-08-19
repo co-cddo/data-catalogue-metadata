@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Share schema",
+  "$id": "schemas/dataShare",
+  "description": "Metadata schema for a Data Share",
+  "type": "object",
+  "$ref": "./../schema/catalogued_resource_schema.json",
+  "properties": {
+    "relatedResource": {
+      "description": "The identifier of a catalogued resource that is the target of this share request",
+      "type": "string",
+      "maxLength": 50
+    }
+  },
+  "required": [
+    "relatedResource"
+  ],
+  "unevaluatedProperties": false
+}
