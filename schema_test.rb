@@ -47,3 +47,7 @@ validate(
   schema: 'schema/data_share_schema.json'
 )
 
+validate(
+  sample: 'samples/error.json',
+  schema: 'schema/error_schema.json'
+)
