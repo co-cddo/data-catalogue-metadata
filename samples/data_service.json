@@ -1,34 +1,34 @@
 {
-  "title": "Advance Passenger Information (API) ",
-  "alternativeTitle": [
-    "Travel Data"
-  ],
-  "summary": "Airline passenger travel data",
+  "identifier": "8d085327-21b6-4d8b-9705-88faad231d23",
+  "supplierIdentifier": "acme-123",
+  "modified": "2023-12-09T16:09:53+00:00",
+  "status": "Published",
+  "title": "Advance Passenger Information",
   "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+  "type": "Data Service",
+  "apiType": "REST",
+  "serviceType": "Transactional",
+  "theme": [
+    "Transport and infrastructure",
+    "Population and society"
+  ],
   "keyword": [
     "Air travel",
     "Passport",
     "Airports",
     "leaving UK",
     "entering UK"
-
-  ],
-  "theme": [
-    "Transport and infrastructure",
-    "Population and society"
   ],
   "contactPoint": {
-    "contactName": "Rob Nichols",
+    "name": "Rob Nichols",
     "email": "robert.nichols@digital.cabinet-office.gov.uk"
   },
-  "creator": [
-    "central-digital-and-data-office"
-  ],
   "publisher": "academy-for-social-justice",
   "securityClassification": "OFFICIAL",
-  "identifier": "8d085327-21b6-4d8b-9705-88faad231d62",
-  "relatedResource": [
-    ""
-  ],
-  "supplierIdentifier": "24bc0cbd-d3b0-4899-b6e7-2ccd40cf5c5e"
+  "accessRights": "INTERNAL",
+  "endpointDescription": "http://example.com/path/to/swagger",
+  "endpointURL": "http://example.com/api/v1",
+  "servesDataset": [
+    "8d085327-21b6-4d8b-9705-88faad231d22"
+  ]
 }

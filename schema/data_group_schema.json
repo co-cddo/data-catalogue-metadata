@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Group schema",
+  "$id": "schemas/dataGroup",
+  "description": "Metadata schema for a Data group",
+  "type": "object",
+  "$ref": "./../schema/catalogued_resource_schema.json",
+  "properties": {
+    "endpointDescription": {
+      "description": "A description of the services available via the end-points, including their operations, parameters etc.",
+      "type": "string",
+      "maxLength": 250
+    },
+    "relatedResource": {
+      "description": "A collection of catalogued resources",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
+    }
+  },
+  "required": [
+    "cataloguedResource"
+  ],
+  "unevaluatedProperties": false
+}
