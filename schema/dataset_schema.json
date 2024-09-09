@@ -34,9 +34,7 @@
             }
           }
         },
-        "required": [
-          "mediaType"
-        ]
+        "required": []
       }
     },
     "issued": {

@@ -130,17 +130,8 @@
     }
   },
   "required": [
-    "accessRights",
     "contactPoint",
     "description",
-    "identifier",
-    "keyword",
-    "modified",
-    "publisher",
-    "securityClassification",
-    "status",
-    "supplierIdentifier",
-    "theme",
     "title",
     "type"
   ],

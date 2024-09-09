@@ -46,10 +46,7 @@
     }
   },
   "required": [
-    "apiType",
     "endpointDescription",
-    "servesDataset",
-    "serviceType"
   ],
   "unevaluatedProperties": false
 }
