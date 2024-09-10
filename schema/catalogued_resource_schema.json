@@ -16,28 +16,31 @@
     },
     "contactPoint": {
       "description": "Contact information",
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "maxLength": 50
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "email": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "owner",
+              "contact"
+            ]
+          }
         },
-        "email": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
-        },
-        "role": {
-          "type": "string",
-          "enum": [
-            "owner",
-            "contact"
-          ]
-        }
-      },
-      "required": [
-        "name",
-        "email"
-      ]
+        "required": [
+          "name",
+          "email"
+        ]
+      }
     },
     "description": {
       "description": "A concise narrative of the content of an catalogued resource.",

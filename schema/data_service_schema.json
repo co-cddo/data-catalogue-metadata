@@ -46,7 +46,7 @@
     }
   },
   "required": [
-    "endpointDescription",
+    "endpointDescription"
   ],
   "unevaluatedProperties": false
 }
