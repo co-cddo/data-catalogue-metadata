@@ -11,7 +11,7 @@
       "type": "string",
       "maxLength": 250
     },
-    "relatedResource": {
+    "hasPart": {
       "description": "A collection of catalogued resources",
       "type": "array",
       "items": {
@@ -21,7 +21,7 @@
     }
   },
   "required": [
-    "cataloguedResource"
+    "hasPart"
   ],
   "unevaluatedProperties": false
 }

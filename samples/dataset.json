@@ -17,10 +17,12 @@
     "leaving UK",
     "entering UK"
   ],
-  "contactPoint": {
-    "name": "Rob Nichols",
-    "email": "robert.nichols@digital.cabinet-office.gov.uk"
-  },
+"contactPoint": [
+    {
+      "name": "Rob Nichols",
+      "email": "robert.nichols@digital.cabinet-office.gov.uk"
+    }
+  ],
   "publisher": "academy-for-social-justice",
   "securityClassification": "OFFICIAL",
   "accessRights": "INTERNAL",
