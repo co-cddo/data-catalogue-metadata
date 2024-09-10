@@ -23,7 +23,7 @@
   "publisher": "department-for-education",
   "securityClassification": "OFFICIAL",
   "accessRights": "INTERNAL",
-  "relatedResource": [
+  "hasPart": [
     "431b7a0c-5455-4f03-aeed-1d7829a2107d",
     "57364e40-0523-4183-980f-565cf0cbab6e",
     "7b85d54b-5bb5-41e7-961c-72b90aa4c636"
