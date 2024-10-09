@@ -1,0 +1,1677 @@
+openapi: '3.0.0'
+
+info:
+
+  title: Metadata Management API
+
+  description: |
+    Welcome to the Metadata Management API.
+    
+    This API allows you to manage data asset metadata records.
+    
+    This API implements the [DCAT-UK metadata standard](https://github.com/co-cddo/demo-data-marketplace-metadata-json-schema/tree/3.1.0/schema).
+
+  version: 3.1.0
+  
+  contact: 
+    name: CDDO Developer Portal
+    url: https://developer.datamarketplace.gov.uk #TBC 
+
+servers:
+  - description: Sandbox
+    url: https://api.sandbox.datamarketplace.gov.uk/v1 
+  - description: Production
+    url: https://api.datamarketplace.gov.uk/v1 
+
+tags: 
+
+  - name: Cataloged Resources
+    description:  >- 
+      Operations concerning the *cataloged-resource* model.
+  - name: Datasets
+    description:  >- 
+      Operations concerning the DCAT-UK metadata exchange *dataset* model. 
+  - name: Data Services
+    description:  >- 
+      Operations concerning the DCAT-UK metadata exchange *data-service* model. 
+
+paths:
+
+  /cataloged-resources:
+
+    get:
+      operationId: queryDataAssets
+      description: | 
+        Performs a filtered query against your organisations data assets.
+      tags:
+        - Cataloged Resources
+      security:
+        - ClientCredentialsScheme: 
+          - discover
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Returns data asset metadata where a match is found agains the following fields:
+            
+              - title
+              - keywords
+              - supplier identifier
+
+          required: false
+          schema:
+            type: string
+            maxLength: 30
+          example: demographics
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 1000
+                items:
+                  $ref: '#/components/schemas/CataloguedResource'
+              examples:
+                Ex1:
+                  summary: Catalogued resources were returned by the query.
+                  value: 
+                    [
+                      {
+                        "identifier": "8d085327-21b6-4d8b-9705-88faad231d22",
+                        "supplierIdentifier": "acme-123",
+                        "modified": "2023-12-09T16:09:53+00:00",
+                        "status": "Published",
+                        "title": "Advance Passenger Information",
+                        "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                        "type": "Data Set",
+                        "theme": [
+                          "Transport and infrastructure",
+                          "Population and society"
+                        ],
+                        "keyword": [
+                          "Air travel",
+                          "Passport",
+                          "Airports",
+                          "leaving UK",
+                          "entering UK"
+                        ],
+                        "contactPoint": [
+                          {
+                            "name": "Rob Nichols",
+                            "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                          }
+                        ],
+                        "publisher": "academy-for-social-justice",
+                        "securityClassification": "OFFICIAL",
+                        "accessRights": "INTERNAL"
+                      },
+                      {
+                        "identifier": "8d085327-21b6-4d8b-9705-88faad231d23",
+                        "supplierIdentifier": "acme-123",
+                        "modified": "2023-12-09T16:09:53+00:00",
+                        "status": "Published",
+                        "title": "Advance Passenger Information",
+                        "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                        "type": "Data Service",
+                        "theme": [
+                          "Transport and infrastructure",
+                          "Population and society"
+                        ],
+                        "keyword": [
+                          "Air travel",
+                          "Passport",
+                          "Airports",
+                          "leaving UK",
+                          "entering UK"
+                        ],
+                        "contactPoint": [
+                          {
+                            "name": "Rob Nichols",
+                            "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                          }
+                        ],
+                        "publisher": "academy-for-social-justice",
+                        "securityClassification": "OFFICIAL",
+                        "accessRights": "INTERNAL"
+                      }
+                    ]
+                NoRecords: 
+                  summary: No catalogued resources were returned by this query.
+                  value: []
+    
+  /datasets:
+
+    post:
+      operationId: CreateDataSet
+      description: >-
+        Creates a DCAT-UK Dataset resource.
+
+        The path to the newly created resource will be returned in the *Location* response header.
+      tags:
+        - Datasets
+      security:
+        - ClientCredentialsScheme: 
+          - publish
+      requestBody: 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+            examples:
+              Ex1:
+                summary: Creates a DCAT-UK resource that describes a dataset with a CSV file distribution.
+                value: 
+                    {
+                      "supplierIdentifier": "acme-123",
+                      "title": "Advance Passenger Information",
+                      "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                      "type": "Data Set",
+                      "status":"Draft",
+                      "theme": [
+                        "Transport and infrastructure",
+                        "Population and society"
+                      ],
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK"
+                      ],
+                      "contactPoint": [
+                        {
+                          "name": "Rob Nichols",
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        }
+                      ],
+                      "publisher": "academy-for-social-justice",
+                      "securityClassification": "OFFICIAL",
+                      "accessRights": "INTERNAL",
+                      "distribution": [
+                        {
+                          "downloadURL": "http://example.com/path/to/file.csv",
+                          "mediaType":["text/csv"],
+                          "accessService": ["8d085327-21b6-4d8b-9705-88faad231d23"]
+                        }
+                      ]
+                    }
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              description: Contains the absolute or relative URL of a newly created resource, alongside a 201 response status.
+              schema:
+                type: string
+                maxLength: 1024
+                example: /datasets/cb29c1af-6b4c-47cc-b394-563871d601dc
+          
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+              examples: 
+                400-DatasetValidation:
+                  $ref: '#/components/examples/400-DatasetValidation'
+        '409': 
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage' 
+              examples:
+                DuplicateRecord:
+                  summary: Internal service conflict.
+                  value:
+                    message: 'The datset cannot be created because a dataset with identifier <internal identifier> already exists. To update an existing dataset please call operation PATCH /datasets/{dataset-id} operation instead.'
+                    code: DM00014
+                    errors: []
+  
+  /datasets/{dataset-id}:
+
+    get:
+      operationId: RetrieveDataset
+      description: | 
+        Retrieves a DCAT-UK Dataset by identifier.
+      tags:
+        - Datasets
+      security:
+        - ClientCredentialsScheme: 
+          - discover
+      parameters:
+        - $ref: '#/components/parameters/DatasetId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+              examples:
+                Ex1:
+                  summary: Gets a DCAT-UK resource that describes a dataset with a CSV file distribution.
+                  value: 
+                   {
+                      "identifier": "8d085327-21b6-4d8b-9705-88faad231d22",
+                      "supplierIdentifier": "acme-123",
+                      "modified": "2023-12-09T16:09:53+00:00",
+                      "status": "Published",
+                      "title": "Advance Passenger Information",
+                      "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                      "type": "Data Set",
+                      "theme": [
+                        "Transport and infrastructure",
+                        "Population and society"
+                      ],
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK"
+                      ],
+                      "contactPoint": [
+                        {
+                          "name": "Rob Nichols",
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        }
+                      ],
+                      "publisher": "academy-for-social-justice",
+                      "securityClassification": "OFFICIAL",
+                      "accessRights": "INTERNAL",
+                      "distribution": [
+                        {
+                          "downloadURL": "http://example.com/path/to/file.csv",
+                          "mediaType":["text/csv"],
+                          "accessService": ["8d085327-21b6-4d8b-9705-88faad231d23"]
+                        }
+                      ]
+                    }
+        '404':
+          $ref: '#/components/responses/404-DatasetNotFound'
+
+    patch:
+      operationId: UpdateDataset
+      description: | 
+        Updates a DCAT-UK Dataset by identifier. 
+
+        Implements JSON Merge Patch [https://www.rfc-editor.org/rfc/rfc7396](https://www.rfc-editor.org/rfc/rfc7396)
+      tags:
+        - Datasets
+      security:
+        - ClientCredentialsScheme: 
+          - publish
+      parameters:
+        - $ref: '#/components/parameters/DatasetId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetJsonMergePatchModel'
+            examples:
+              Ex1:
+                summary: Add a new keyword
+                value:                   
+                  {
+                    "keyword": [
+                      "Air travel",
+                      "Passport",
+                      "Airports",
+                      "leaving UK",
+                      "entering UK",
+                      "New keyword here!"
+                    ]
+                  }
+              Ex2:
+                summary: Change the contact point name
+                value:                   
+                  {
+                    "contactPoint": [
+                      {
+                        "name": "Tom Redfern",
+                        "email": "tom.redfern@digital.cabinet-office.gov.uk"
+                      }
+                    ]
+                  }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+              examples:
+                Ex1:
+                  summary: Keyword added
+                  value: 
+                    {
+                      "identifier": "8d085327-21b6-4d8b-9705-88faad231d22",
+                      "supplierIdentifier": "acme-123",
+                      "modified": "2023-12-09T16:09:53+00:00",
+                      "status": "Published",
+                      "title": "Advance Passenger Information",
+                      "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                      "type": "Data Set",
+                      "theme": [
+                        "Transport and infrastructure",
+                        "Population and society"
+                      ],
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK",
+                        "New keyword here!"
+                      ],
+                      "contactPoint": [
+                        {
+                          "name": "Rob Nichols",
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        }
+                      ],
+                      "publisher": "academy-for-social-justice",
+                      "securityClassification": "OFFICIAL",
+                      "accessRights": "INTERNAL",
+                      "distribution": [
+                        {
+                          "downloadURL": "http://example.com/path/to/file.csv",
+                          "mediaType":["text/csv"],
+                          "accessService": ["8d085327-21b6-4d8b-9705-88faad231d23"]
+                        }
+                      ]
+                    }
+                Ex2:
+                  summary: Contact point name changed
+                  value: 
+                    {
+                      "identifier": "8d085327-21b6-4d8b-9705-88faad231d22",
+                      "supplierIdentifier": "acme-123",
+                      "modified": "2023-12-09T16:09:53+00:00",
+                      "status": "Published",
+                      "title": "Advance Passenger Information",
+                      "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                      "type": "Data Set",
+                      "theme": [
+                        "Transport and infrastructure",
+                        "Population and society"
+                      ],
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK"
+                      ],
+                      "contactPoint": [
+                        {
+                          "name": "Tom Redfern",
+                          "email": "tom.redfern@digital.cabinet-office.gov.uk"
+                        }
+                      ],
+                      "publisher": "academy-for-social-justice",
+                      "securityClassification": "OFFICIAL",
+                      "accessRights": "INTERNAL",
+                      "distribution": [
+                        {
+                          "downloadURL": "http://example.com/path/to/file.csv",
+                          "mediaType":["text/csv"],
+                          "accessService": ["8d085327-21b6-4d8b-9705-88faad231d23"]
+                        }
+                      ]
+                    }
+                
+        '400':
+          description: >-
+            A 400 Bad Request response status is returned for validation or other business errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+              examples: 
+                400-DatasetValidation:
+                  $ref: '#/components/examples/400-DatasetValidation'
+        '404':
+          $ref: '#/components/responses/404-DatasetNotFound'
+
+    delete:
+      operationId: RemoveDataset 
+      description: | 
+        Deletes a DCAT-UK Dataset by identifier.
+      tags:
+        - Datasets
+      security:
+        - ClientCredentialsScheme: 
+          - delete
+      parameters:
+        - $ref: '#/components/parameters/DatasetId'
+      responses:
+        '204':
+          description: No Content
+        '404':
+          $ref: '#/components/responses/404-DatasetNotFound'
+
+  /data-services:
+
+    post:
+      operationId: CreateDataService
+      description: >-
+        Creates a DCAT-UK Data Service resource.
+
+        The path to the newly created resource will be returned in the *Location* response header.
+      tags:
+        - Data Services
+      security:
+        - ClientCredentialsScheme: 
+          - publish
+      requestBody: 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataService'
+            examples:
+              Ex1:
+                summary: Creates a DCAT-UK resource that describes a dataservice containing a reference to a dataset.
+                value:                   
+                  {
+                    "supplierIdentifier": "acme-123",
+                    "status": "Published",
+                    "title": "Advance Passenger Information",
+                    "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                    "type": "Data Service",
+                    "theme": [
+                      "Transport and infrastructure",
+                      "Population and society"
+                    ],
+                    "keyword": [
+                      "Air travel",
+                      "Passport",
+                      "Airports",
+                      "leaving UK",
+                      "entering UK"
+                    ],
+                    "contactPoint": [
+                      {
+                        "name": "Rob Nichols",
+                        "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                      }
+                    ],
+                    "publisher": "academy-for-social-justice",
+                    "securityClassification": "OFFICIAL",
+                    "accessRights": "INTERNAL",
+                    "endpointDescription": "http://example.com/path/to/swagger",
+                    "endpointURL": "http://example.com/api/v1",
+                    "servesDataset": [
+                      "8d085327-21b6-4d8b-9705-88faad231d22"
+                    ]
+                  }
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              description: Contains the absolute or relative URL of a newly created resource, alongside a 201 response status.
+              schema:
+                type: string
+                maxLength: 1024
+              example: /data-services/8d085327-21b6-4d8b-9705-88faad231d62
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+              examples: 
+                400-DataServiceValidation:
+                  $ref: '#/components/examples/400-DataServiceValidation'
+        '409': 
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage' 
+              examples:
+                DuplicateRecord:
+                  summary: Internal service conflict.
+                  value:
+                    message: 'The data service cannot be created because a data service with identifier <internal identifier> already exists. To update an existing data service please call operation PATCH /data-services/{data-service-id} operation instead.'
+                    code: DM00014
+                    errors: []
+
+  /data-services/{data-service-id}:
+
+    get:
+      operationId: RetrieveDataService
+      description: | 
+        Retrieves a DCAT-UK Data Service by identifier.
+      tags:
+        - Data Services
+      security:
+        - ClientCredentialsScheme: 
+          - discover
+      parameters:
+        - $ref: '#/components/parameters/DataServiceId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataService'
+              examples:
+                Ex1:
+                  summary: Returns a data service which contains a dataset reference.
+                  value:                   
+                    {
+                      "identifier": "8d085327-21b6-4d8b-9705-88faad231d23",
+                      "supplierIdentifier": "acme-123",
+                      "modified": "2023-12-09T16:09:53+00:00",
+                      "status": "Published",
+                      "title": "Advance Passenger Information",
+                      "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                      "type": "Data Service",
+                      "theme": [
+                        "Transport and infrastructure",
+                        "Population and society"
+                      ],
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK"
+                      ],
+                      "contactPoint": [
+                        {
+                          "name": "Rob Nichols",
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        }
+                      ],
+                      "publisher": "academy-for-social-justice",
+                      "securityClassification": "OFFICIAL",
+                      "accessRights": "INTERNAL",
+                      "endpointDescription": "http://example.com/path/to/swagger",
+                      "endpointURL": "http://example.com/api/v1",
+                      "servesDataset": [
+                        "8d085327-21b6-4d8b-9705-88faad231d22"
+                      ]
+                    }
+        '404':
+          $ref: '#/components/responses/404-DataServiceNotFound'
+
+    patch:
+      operationId: UpdateDataService
+      description: | 
+        Updates a DCAT-UK Data Service by identifier. 
+
+        Implements JSON Merge Patch [https://www.rfc-editor.org/rfc/rfc7396](https://www.rfc-editor.org/rfc/rfc7396)
+      tags:
+        - Data Services
+      security:
+        - ClientCredentialsScheme: 
+          - publish
+      parameters:
+        - $ref: '#/components/parameters/DataServiceId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataServiceJsonMergePatchModel'
+            examples:
+              Ex1:
+                summary: Modify the API endpoint address
+                value:                   
+                    {
+                      "endpointURL": "http://example.com/v2/api"
+                    }
+              Ex2:
+                summary: Add some keywords
+                value:                   
+                    {
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK",
+                        "New keyword here!"
+                      ]
+                    }
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataService'
+              examples:
+                Ex1:
+                  summary: API endpoint address updated
+                  value: 
+                    {
+                      "identifier": "8d085327-21b6-4d8b-9705-88faad231d23",
+                      "supplierIdentifier": "acme-123",
+                      "modified": "2023-12-09T16:09:53+00:00",
+                      "status": "Published",
+                      "title": "Advance Passenger Information",
+                      "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                      "type": "Data Service",
+                      "theme": [
+                        "Transport and infrastructure",
+                        "Population and society"
+                      ],
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK"
+                      ],
+                      "contactPoint": [
+                        {
+                          "name": "Rob Nichols",
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        }
+                      ],
+                      "publisher": "academy-for-social-justice",
+                      "securityClassification": "OFFICIAL",
+                      "accessRights": "INTERNAL",
+                      "endpointDescription": "http://example.com/path/to/swagger",
+                      "endpointURL": "http://example.com/v2/api",
+                      "servesDataset": [
+                        "8d085327-21b6-4d8b-9705-88faad231d22"
+                      ]
+                    }
+                Ex2:
+                  summary: Keywords added
+                  value: 
+                    {
+                      "identifier": "8d085327-21b6-4d8b-9705-88faad231d23",
+                      "supplierIdentifier": "acme-123",
+                      "modified": "2023-12-09T16:09:53+00:00",
+                      "status": "Published",
+                      "title": "Advance Passenger Information",
+                      "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
+                      "type": "Data Service",
+                      "theme": [
+                        "Transport and infrastructure",
+                        "Population and society"
+                      ],
+                      "keyword": [
+                        "Air travel",
+                        "Passport",
+                        "Airports",
+                        "leaving UK",
+                        "entering UK",
+                        "New keyword here!"
+                      ],
+                      "contactPoint": [
+                        {
+                          "name": "Rob Nichols",
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        }
+                      ],
+                      "publisher": "academy-for-social-justice",
+                      "securityClassification": "OFFICIAL",
+                      "accessRights": "INTERNAL",
+                      "endpointDescription": "http://example.com/path/to/swagger",
+                      "endpointURL": "http://example.com/v1/api",
+                      "servesDataset": [
+                        "8d085327-21b6-4d8b-9705-88faad231d22"
+                      ]
+                    }
+        '400':
+          description: >-
+            A 400 Bad Request response status is returned for validation or other business errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+              examples: 
+                400-DataServiceValidation:
+                  $ref: '#/components/examples/400-DataServiceValidation'
+        '404':
+          $ref: '#/components/responses/404-DataServiceNotFound'
+
+    delete:
+      operationId: RemoveDataService 
+      description: | 
+        Deletes a DCAT-UK Data Service by identifier.
+      tags:
+        - Data Services
+      security:
+        - ClientCredentialsScheme: 
+          - delete
+      parameters:
+        - $ref: '#/components/parameters/DataServiceId'
+      responses:
+        '204':
+          description: No Content
+        '404':
+          $ref: '#/components/responses/404-DataServiceNotFound'
+  
+components:  
+  
+  securitySchemes:
+
+    ClientCredentialsScheme:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /ClientAuth/get-token
+          scopes: 
+            discover: Discover data assets in the catalog
+            publish: Publish data assets to the catalog
+            delete: Remove data assets from the catalogue
+
+  parameters: 
+
+    DatasetId:
+      name: dataset-id
+      in: path
+      description: The identifier of the dataset to be retrieved.
+      required: true
+      schema:
+        type: string
+        format: uuid
+      example: cb29c1af-6b4c-47cc-b394-563871d601dc
+
+    DataServiceId:
+      name: data-service-id
+      in: path
+      description: The identifier of the dataset to be retrieved.
+      required: true
+      schema:
+        type: string
+        format: uuid
+      example: 8d085327-21b6-4d8b-9705-88faad231d62
+    
+  schemas:
+
+    CataloguedResource:
+      description: >-
+        Model of the core or minimum field-set for any DCAT-UK data asset. 
+        
+        
+        The *catalogued resource* is an abstract model, which can represent any DCAT-UK data asset base type. It is useful for the purpose of querying and reporting across the entire collection of data assets in a metadata catalogue, regardless of underlying type.
+      type: object
+      additionalProperties: false
+      required:
+        - contactPoint
+        - description
+        - title
+        - type
+      properties:
+        accessRights:
+          description: A rights statement that concerns how the distribution is accessed.
+          type: string
+          enum:
+          - INTERNAL
+          - OPEN
+          - COMMERCIAL
+        contactPoint:
+          description: Contact information
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                maxLength: 50
+              email:
+                type: string
+                pattern: "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+              role:
+                type: string
+                enum:
+                - owner
+                - contact
+            required:
+            - name
+            - email
+        description:
+          description: A concise narrative of the content of an catalogued resource.
+          type: string
+          maxLength: 4096
+        identifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource within the catalogue.
+          type: string
+          maxLength: 50
+        keyword:
+          description: Uncontrolled terms (words or phrases) assigned to describe an information
+            resource.
+          type: array
+          items:
+            type: string
+            maxLength: 75
+        modified:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        publisher:
+          description: The entity responsible for making the catalogued resource publicly
+            available.
+          type: string
+          maxLength: 75
+        securityClassification:
+          description: An information security designation that identifies the minimum level
+            of protection assigned to an information resource.
+          type: string
+          enum:
+          - OFFICIAL
+          - SECRET
+          - TOP_SECRET
+          - NOT_APPLICABLE
+        status:
+          description: Lifecycle status of resource within catalogue
+          type: string
+          enum:
+          - Draft
+          - Published
+          - Withdrawn
+          - Deleted
+        supplierIdentifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource a third party (supplier's) system.
+          type: string
+          maxLength: 50
+        theme:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: array
+          items:
+            type: string
+            enum:
+            - Agriculture, fisheries and forestry
+            - Business, economics and finance
+            - Crime and justice
+            - Culture, leisure and sport
+            - Education
+            - Energy
+            - Environment and nature
+            - Geography
+            - Government and public sector
+            - Health and care
+            - Population and society
+            - Science and technology
+            - Transport and infrastructure
+        title:
+          description: The full and formal name given to an information resource. A name
+            given to the distribution.
+          type: string
+          maxLength: 200
+        type:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: string
+          enum:
+          - Data Set
+          - Data Service
+          - Data Group
+          - Data Share
+    
+    Dataset:
+      description: Data Marketplace Metadata schema for a Dataset
+      type: object
+      additionalProperties: false
+      required:
+        - contactPoint
+        - description
+        - title
+        - type
+      properties:
+        accessRights:
+          description: A rights statement that concerns how the distribution is accessed.
+          type: string
+          enum:
+          - INTERNAL
+          - OPEN
+          - COMMERCIAL
+        contactPoint:
+          description: Contact information
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                maxLength: 50
+              email:
+                type: string
+                pattern: "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+              role:
+                type: string
+                enum:
+                - owner
+                - contact
+            required:
+            - name
+            - email
+        description:
+          description: A concise narrative of the content of an catalogued resource.
+          type: string
+          maxLength: 4096
+        identifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource within the catalogue.
+          type: string
+          maxLength: 50
+        keyword:
+          description: Uncontrolled terms (words or phrases) assigned to describe an information
+            resource.
+          type: array
+          items:
+            type: string
+            maxLength: 75
+        modified:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        publisher:
+          description: The entity responsible for making the catalogued resource publicly
+            available.
+          type: string
+          maxLength: 75
+        securityClassification:
+          description: An information security designation that identifies the minimum level
+            of protection assigned to an information resource.
+          type: string
+          enum:
+          - OFFICIAL
+          - SECRET
+          - TOP_SECRET
+          - NOT_APPLICABLE
+        status:
+          description: Lifecycle status of resource within catalogue
+          type: string
+          enum:
+          - Draft
+          - Published
+          - Withdrawn
+          - Deleted
+        supplierIdentifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource a third party (supplier's) system.
+          type: string
+          maxLength: 50
+        theme:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: array
+          items:
+            type: string
+            enum:
+            - Agriculture, fisheries and forestry
+            - Business, economics and finance
+            - Crime and justice
+            - Culture, leisure and sport
+            - Education
+            - Energy
+            - Environment and nature
+            - Geography
+            - Government and public sector
+            - Health and care
+            - Population and society
+            - Science and technology
+            - Transport and infrastructure
+        title:
+          description: The full and formal name given to an information resource. A name
+            given to the distribution.
+          type: string
+          maxLength: 200
+        type:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: string
+          enum:
+          - Data Set
+          - Data Service
+          - Data Group
+          - Data Share
+        distribution:
+          description: A collection of distributions
+          type: array
+          items:
+            type: object
+            properties:
+              accessService:
+                description: A reference to the service that provided the data
+                type: array
+                items:
+                  type: string
+                  maxLength: 50
+              downloadURL:
+                description: The location from which the Dataset can be downloaded
+                type: string
+                maxLength: 250
+              mediaType:
+                description: The IANA media type, or file format, type, or extention, of
+                  the distribution file.
+                type: array
+                items:
+                  type: string
+                  maxLength: 100
+        issued:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        updateFrequency:
+          description: The schedule for how often the data is updated
+          type: string
+
+    DatasetJsonMergePatchModel:
+      description: Json Merge Patch schema definition for a Data Marketplace Metadata schema for a Dataset
+      type: object
+      additionalProperties: false
+      properties:
+        accessRights:
+          description: A rights statement that concerns how the distribution is accessed.
+          type: string
+          enum:
+          - INTERNAL
+          - OPEN
+          - COMMERCIAL
+        contactPoint:
+          description: Contact information
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                maxLength: 50
+              email:
+                type: string
+                pattern: "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+              role:
+                type: string
+                enum:
+                - owner
+                - contact
+            required:
+            - name
+            - email
+        description:
+          description: A concise narrative of the content of an catalogued resource.
+          type: string
+          maxLength: 4096
+        identifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource within the catalogue.
+          type: string
+          maxLength: 50
+        keyword:
+          description: Uncontrolled terms (words or phrases) assigned to describe an information
+            resource.
+          type: array
+          items:
+            type: string
+            maxLength: 75
+        modified:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        publisher:
+          description: The entity responsible for making the catalogued resource publicly
+            available.
+          type: string
+          maxLength: 75
+        securityClassification:
+          description: An information security designation that identifies the minimum level
+            of protection assigned to an information resource.
+          type: string
+          enum:
+          - OFFICIAL
+          - SECRET
+          - TOP_SECRET
+          - NOT_APPLICABLE
+        status:
+          description: Lifecycle status of resource within catalogue
+          type: string
+          enum:
+          - Draft
+          - Published
+          - Withdrawn
+          - Deleted
+        supplierIdentifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource a third party (supplier's) system.
+          type: string
+          maxLength: 50
+        theme:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: array
+          items:
+            type: string
+            enum:
+            - Agriculture, fisheries and forestry
+            - Business, economics and finance
+            - Crime and justice
+            - Culture, leisure and sport
+            - Education
+            - Energy
+            - Environment and nature
+            - Geography
+            - Government and public sector
+            - Health and care
+            - Population and society
+            - Science and technology
+            - Transport and infrastructure
+        title:
+          description: The full and formal name given to an information resource. A name
+            given to the distribution.
+          type: string
+          maxLength: 200
+        type:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: string
+          enum:
+          - Data Set
+          - Data Service
+          - Data Group
+          - Data Share
+        distribution:
+          description: A collection of distributions
+          type: array
+          items:
+            type: object
+            properties:
+              accessService:
+                description: A reference to the service that provided the data
+                type: array
+                items:
+                  type: string
+                  maxLength: 50
+              downloadURL:
+                description: The location from which the Dataset can be downloaded
+                type: string
+                maxLength: 250
+              mediaType:
+                description: The IANA media type, or file format, type, or extention, of
+                  the distribution file.
+                type: array
+                items:
+                  type: string
+                  maxLength: 100
+        issued:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        updateFrequency:
+          description: The schedule for how often the data is updated
+          type: string
+    
+    DataService:
+      description: Data Marketplace Metadata schema for a Dataservice
+      type: object
+      additionalProperties: false
+      required:
+        - contactPoint
+        - description
+        - title
+        - type
+        - endpointDescription
+      properties:
+        accessRights:
+          description: A rights statement that concerns how the distribution is accessed.
+          type: string
+          enum:
+          - INTERNAL
+          - OPEN
+          - COMMERCIAL
+        contactPoint:
+          description: Contact information
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                maxLength: 50
+              email:
+                type: string
+                pattern: "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+              role:
+                type: string
+                enum:
+                - owner
+                - contact
+            required:
+            - name
+            - email
+        description:
+          description: A concise narrative of the content of an catalogued resource.
+          type: string
+          maxLength: 4096
+        identifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource within the catalogue.
+          type: string
+          maxLength: 50
+        keyword:
+          description: Uncontrolled terms (words or phrases) assigned to describe an information
+            resource.
+          type: array
+          items:
+            type: string
+            maxLength: 75
+        modified:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        publisher:
+          description: The entity responsible for making the catalogued resource publicly
+            available.
+          type: string
+          maxLength: 75
+        securityClassification:
+          description: An information security designation that identifies the minimum level
+            of protection assigned to an information resource.
+          type: string
+          enum:
+          - OFFICIAL
+          - SECRET
+          - TOP_SECRET
+          - NOT_APPLICABLE
+        status:
+          description: Lifecycle status of resource within catalogue
+          type: string
+          enum:
+          - Draft
+          - Published
+          - Withdrawn
+          - Deleted
+        supplierIdentifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource a third party (supplier's) system.
+          type: string
+          maxLength: 50
+        theme:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: array
+          items:
+            type: string
+            enum:
+            - Agriculture, fisheries and forestry
+            - Business, economics and finance
+            - Crime and justice
+            - Culture, leisure and sport
+            - Education
+            - Energy
+            - Environment and nature
+            - Geography
+            - Government and public sector
+            - Health and care
+            - Population and society
+            - Science and technology
+            - Transport and infrastructure
+        title:
+          description: The full and formal name given to an information resource. A name
+            given to the distribution.
+          type: string
+          maxLength: 200
+        type:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: string
+          enum:
+          - Data Set
+          - Data Service
+          - Data Group
+          - Data Share
+        distribution:
+          description: A collection of distributions
+          type: array
+          items:
+            type: object
+            properties:
+              accessService:
+                description: A reference to the service that provided the data
+                type: array
+                items:
+                  type: string
+                  maxLength: 50
+              downloadURL:
+                description: The location from which the Dataset can be downloaded
+                type: string
+                maxLength: 250
+              mediaType:
+                description: The IANA media type, or file format, type, or extention, of
+                  the distribution file.
+                type: array
+                items:
+                  type: string
+                  maxLength: 100
+        issued:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        updateFrequency:
+          description: The schedule for how often the data is updated
+          type: string
+        apiType:
+          description: The API type.
+          type: string
+          enum:
+          - REST
+          - SOAP
+          - Event
+          - RPC
+          - GraphQL
+        endpointDescription:
+          description: A concise narrative of the content of end point service.
+          type: string
+          maxLength: 4096
+        endpointURL:
+          description: A concise narrative of the content of end point service.
+          type: string
+          maxLength: 250
+        servesDataset:
+          description: A collection of datasets, or the references to the datasets, that
+            this data service can distribute.
+          type: array
+          items:
+            type: string
+            maxLength: 250
+        serviceType:
+          description: The Service type.
+          type: string
+          enum:
+          - Bulk
+          - Transactional
+          - Information
+
+    DataServiceJsonMergePatchModel:
+      description: Json Merge Patch schema definition for a Data Marketplace Metadata schema for a Dataservice
+      type: object
+      additionalProperties: false
+      properties:
+        accessRights:
+          description: A rights statement that concerns how the distribution is accessed.
+          type: string
+          enum:
+          - INTERNAL
+          - OPEN
+          - COMMERCIAL
+        contactPoint:
+          description: Contact information
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                maxLength: 50
+              email:
+                type: string
+                pattern: "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+              role:
+                type: string
+                enum:
+                - owner
+                - contact
+            required:
+            - name
+            - email
+        description:
+          description: A concise narrative of the content of an catalogued resource.
+          type: string
+          maxLength: 4096
+        identifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource within the catalogue.
+          type: string
+          maxLength: 50
+        keyword:
+          description: Uncontrolled terms (words or phrases) assigned to describe an information
+            resource.
+          type: array
+          items:
+            type: string
+            maxLength: 75
+        modified:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        publisher:
+          description: The entity responsible for making the catalogued resource publicly
+            available.
+          type: string
+          maxLength: 75
+        securityClassification:
+          description: An information security designation that identifies the minimum level
+            of protection assigned to an information resource.
+          type: string
+          enum:
+          - OFFICIAL
+          - SECRET
+          - TOP_SECRET
+          - NOT_APPLICABLE
+        status:
+          description: Lifecycle status of resource within catalogue
+          type: string
+          enum:
+          - Draft
+          - Published
+          - Withdrawn
+          - Deleted
+        supplierIdentifier:
+          description: A unique number, code, or reference value assigned to a catalogued
+            resource a third party (supplier's) system.
+          type: string
+          maxLength: 50
+        theme:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: array
+          items:
+            type: string
+            enum:
+            - Agriculture, fisheries and forestry
+            - Business, economics and finance
+            - Crime and justice
+            - Culture, leisure and sport
+            - Education
+            - Energy
+            - Environment and nature
+            - Geography
+            - Government and public sector
+            - Health and care
+            - Population and society
+            - Science and technology
+            - Transport and infrastructure
+        title:
+          description: The full and formal name given to an information resource. A name
+            given to the distribution.
+          type: string
+          maxLength: 200
+        type:
+          description: 'Topic: A controlled term that expresses the broad topical content
+            of an information resource. Subject: A controlled term that expresses a topic
+            of the intellectual content of an information resource.'
+          type: string
+          enum:
+          - Data Set
+          - Data Service
+          - Data Group
+          - Data Share
+        distribution:
+          description: A collection of distributions
+          type: array
+          items:
+            type: object
+            properties:
+              accessService:
+                description: A reference to the service that provided the data
+                type: array
+                items:
+                  type: string
+                  maxLength: 50
+              downloadURL:
+                description: The location from which the Dataset can be downloaded
+                type: string
+                maxLength: 250
+              mediaType:
+                description: The IANA media type, or file format, type, or extention, of
+                  the distribution file.
+                type: array
+                items:
+                  type: string
+                  maxLength: 100
+        issued:
+          "$ref": "#/components/schemas/dateOrDateTime"
+        updateFrequency:
+          description: The schedule for how often the data is updated
+          type: string
+        apiType:
+          description: The API type.
+          type: string
+          enum:
+          - REST
+          - SOAP
+          - Event
+          - RPC
+          - GraphQL
+        endpointDescription:
+          description: A concise narrative of the content of end point service.
+          type: string
+          maxLength: 4096
+        endpointURL:
+          description: A concise narrative of the content of end point service.
+          type: string
+          maxLength: 250
+        servesDataset:
+          description: A collection of datasets, or the references to the datasets, that
+            this data service can distribute.
+          type: array
+          items:
+            type: string
+            maxLength: 250
+        serviceType:
+          description: The Service type.
+          type: string
+          enum:
+          - Bulk
+          - Transactional
+          - Information
+ 
+    ErrorMessage:
+      description: Data Marketplace schema for an error object
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          description: A system specific code for the global error raised
+          type: string
+          maxLength: 100
+        errors:
+          description: An array of the specific error details
+          type: array
+          items:
+            "$ref": "#/components/schemas/InnerError"
+        message:
+          description: Summary description of the nature of the error
+          type: string
+          maxLength: 350
+      required:
+      - message
+      - code
+      - errors
+
+    InnerError:
+      description: Error details object
+      type: object
+      properties:
+        detail:
+          description: Human readable description of the details of the error
+          type: string
+          maxLength: 200
+        instance:
+          description: An identifier of the instance of the object where the error occured
+          type: string
+          maxLength: 100
+        location:
+          description: A pointer to the location of the error within the instance.
+          type: string
+          maxLength: 100
+        severity:
+          description: Severity of error. Could be a level or description.
+          type: string
+          maxLength: 100
+        type:
+          description: A systematic identifier for the type of error.
+          type: string
+          maxLength: 100
+      required:
+      - detail
+      - type
+
+    dateOrDateTime:
+      anyOf:
+      - "$ref": "#/components/schemas/YYYY-MM-DD"
+      - type: string
+        format: date-time
+    
+    YYYY-MM-DD:
+      description: Date in format YYYY-MM-DD.
+      type: string
+      pattern: "^20\\d{2}\\-[0-1]\\d\\-[0-3]\\d$"
+
+  examples:
+    
+    400-DatasetValidation:
+      summary: Validation problems with Dataset metadata.
+      value:
+        message: Validation failures
+        code: DM00012
+        errors:
+        - type: Fatal
+          detail: The attribute 'summary' is too long. It should be less than 250 characters
+          location: "/summary"
+        - type: Fatal
+          detail: The distribution byteSize of '1Mb' is not an integer
+          location: "/distribution/byteSize"
+
+    400-DataServiceValidation:
+      summary: Validation problems with Data Service metadata.
+      value:
+        message: Validation failures
+        code: DM00012
+        errors:
+        - type: Fatal
+          detail: The value 'some.non-uri.template' is not a valid URI.
+          location: "/endpointURL"
+
+  responses: 
+    
+    404-DatasetNotFound:
+      description: Resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage' 
+          examples:
+            DatasetNotFound:
+              summary: Dataset not found
+              value:
+                message: Dataset with identifier <data marketplace identifier> does not exist.
+                code: DM00010
+                errors: []
+
+    404-DataServiceNotFound:
+      description: Resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage' 
+          examples:
+            DatasetNotFound:
+              summary: Data service not found
+              value:
+                message: Data service with identifier <data marketplace identifier> does not exist.
+                code: DM00010
+                errors: []
+
+
+
