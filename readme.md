@@ -156,6 +156,18 @@ Here is a person object that matches that schema:
 }
 ```
 
+#### Running the JSON schema locally
+
+A Ruby script is provided that loads the project JSON Schema and sample JSON objects, and attempts to validate the
+objects against the schema.
+
+To use the script (assuming Ruby is installed locally) first run `bundle` to install the dependencies, and then run
+the script using:
+
+```bash
+ruby schema_test.rb
+```
+
 Data Marketplace objects described by the schema
 ------------------------------------------------
 
@@ -249,7 +261,7 @@ achieve this the outside system (remote) sends a request  via HTTP (the internet
 endpoint location (an URL) provided by the Data Marketplace. The characteristics of the request determine the response
 and the API specification defines the relationship between the request and the expected response.
 
-The Project’s API Specification is stored at /api_specification
+The Data Marketplace API Specification is stored at /api_specification
 
 ### API Actions
 
@@ -289,7 +301,7 @@ set of endpoints:
   newly created “thing” resource.
 - **GET `http://example.com/things`** - Read all: a list of things including the URLs to read each individual thing (see next
   item)
-- **GET `http://example.com/things/<ID>`** - Read one: where “<ID>” would be replaced with the ID of the matching “thing” to
+- **GET `http://example.com/things/<ID>`** - Read one: where “`<ID>`” would be replaced with the ID of the matching “thing” to
   be viewed.
 - **PATCH  `http://example.com/things/<ID>`** - Update one: Update the resource with the matching ID.
 - **DELETE  `http://example.com/things/<ID>`** - Delete one: The resource with the matching ID would be removed from the system.
@@ -323,16 +335,3 @@ documentation making it easy for back end implementation and client side consump
 A Swagger UI representation of the API Specification can be found at
 [/swagger](https://co-cddo.github.io/demo-data-marketplace-metadata-json-schema/swagger/)
 on this repositories Github pages.
-
-Running locally
----------------
-
-A Ruby script is provided that loads the project JSON Schema and sample JSON objects, and attempts to validate the
-objects against the schema.
-
-To use the script (assuming Ruby is installed locally) first run `bundle` to install the dependencies, and then run
-the script using:
-
-```bash
-ruby schema_test.rb
-```
