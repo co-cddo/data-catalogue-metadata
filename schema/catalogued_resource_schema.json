@@ -62,7 +62,7 @@
     },
     "modified": {
       "description": "The date on which the data was created or last updated.",
-      "$ref": "./../schema/shared_schema.json#/schemas/dateOrDateTime"
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "publisher": {
       "description": "The entity responsible for making the catalogued resource publicly available.",
