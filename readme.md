@@ -1,15 +1,15 @@
 
-The Data Marketplace
-====================
+Data Catalogue Metadata
+=======================
 
-This repository stores objects (JSON Schema) that are used to define the structure of objects passed to and from the Data
-Marketplace and the API specification for the interface through which the objects will be transported.
+This repository stores objects (JSON Schema) that are used to define the structure of objects passed to and from Data Catalogues
+such as the Data Marketplace and the API specification for the interface through which the objects will be transported.
 
 JSON Schema
 -----------
 
 A JSON Schema provides a computer readable description of a metadata data object. The project’s schema can be compared to a JSON
-representation of a Data Marketplace resource’s metadata with the output being a report describing the discrepancies between the
+representation of a Data Catalogue's resource’s metadata with the output being a report describing the discrepancies between the
 two. This allows the schema to be used to validate metadata records.
 
 Due to the straightforward structure of JSON the description can also be read by people such that it is also a useful tool to aid

@@ -4,7 +4,7 @@
   "$id": "schemas/dataset",
   "description": "Metadata schema for a Dataset",
   "type": "object",
-  "$ref": "./../schema/catalogued_resource_schema.json",
+  "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json",
   "properties": {
     "distribution": {
       "description": "A collection of distributions",
@@ -39,7 +39,7 @@
     },
     "issued": {
       "description": "The date the data was issued.",
-      "$ref": "./../schema/shared_schema.json#/schemas/dateOrDateTime"
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "updateFrequency": {
       "description": "The schedule for how often the data is updated",
