@@ -75,7 +75,7 @@ paths:
                   $ref: '#/components/schemas/CatalogedResource'
               examples:
                 Ex1:
-                  summary: *cataloged-resources* were returned by the query.
+                  summary: '*cataloged-resources* were returned by the query.'
                   value: 
                     [
                       {
