@@ -2,16 +2,16 @@ openapi: '3.0.0'
 
 info:
 
-  title: Metadata Management API
+  title: Data Catalogue Metadata API
 
   description: |
-    Welcome to the Metadata Management API.
-    
-    This API allows you to manage data asset metadata records.
-    
-    This API implements the [DCAT-UK metadata standard](https://github.com/co-cddo/demo-data-marketplace-metadata-json-schema/tree/3.1.0/schema).
+    This API allows you to search, create, update and delete metadata records about data assets published in any data catalogue that implements the [data-catalogue-metadata JSON schema](https://co-cddo.github.io/data-catalogue-metadata/schema).
 
-  version: 3.1.0
+    This JSON schema is based on the [Data Catalog Vocabulary (DCAT) - Version 3](https://www.w3.org/TR/vocab-dcat-3/).
+
+    An example of a data catalogue implementing this schema is the [CDDO Data Marketplace](https://datamarketplace.gov.uk).
+  
+  version: 3.1.1
   
   contact: 
     name: CDDO Developer Portal
