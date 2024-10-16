@@ -30,10 +30,10 @@ tags:
       Operations concerning the *cataloged-resource* model.
   - name: Datasets
     description:  >- 
-      Operations concerning the DCAT-UK metadata exchange *dataset* model. 
+      Operations concerning the *dataset* model. 
   - name: Data Services
     description:  >- 
-      Operations concerning the DCAT-UK metadata exchange *data-service* model. 
+      Operations concerning the *data-service* model. 
 
 paths:
 
@@ -52,7 +52,7 @@ paths:
         - name: filter
           in: query
           description: >-
-            Returns data asset metadata where a match is found agains the following fields:
+            Returns data asset metadata where a match is found against the following fields:
             
               - title
               - keywords
@@ -72,10 +72,10 @@ paths:
                 type: array
                 maxItems: 1000
                 items:
-                  $ref: '#/components/schemas/CataloguedResource'
+                  $ref: '#/components/schemas/CatalogedResource'
               examples:
                 Ex1:
-                  summary: Catalogued resources were returned by the query.
+                  summary: *cataloged-resources* were returned by the query.
                   value: 
                     [
                       {
@@ -138,7 +138,7 @@ paths:
                       }
                     ]
                 NoRecords: 
-                  summary: No catalogued resources were returned by this query.
+                  summary: No *cataloged-resources* were returned by this query.
                   value: []
     
   /datasets:
@@ -764,8 +764,8 @@ components:
         clientCredentials:
           tokenUrl: /ClientAuth/get-token
           scopes: 
-            discover: Discover data assets in the catalog
-            publish: Publish data assets to the catalog
+            discover: Discover data assets in the catalogue
+            publish: Publish data assets to the catalogue
             delete: Remove data assets from the catalogue
 
   parameters: 
@@ -792,12 +792,12 @@ components:
     
   schemas:
 
-    CataloguedResource:
+    CatalogedResource:
       description: >-
         Model of the core or minimum field-set for any DCAT-UK data asset. 
         
         
-        The *catalogued resource* is an abstract model, which can represent any DCAT-UK data asset base type. It is useful for the purpose of querying and reporting across the entire collection of data assets in a metadata catalogue, regardless of underlying type.
+        The *cataloged-resource* is an abstract model, which can represent any data asset type. It is useful for the purpose of querying and reporting across the entire collection of data assets in a metadata catalogue, regardless of the underlying type.
       type: object
       additionalProperties: false
       required:
@@ -834,12 +834,11 @@ components:
             - name
             - email
         description:
-          description: A concise narrative of the content of an catalogued resource.
+          description: A concise narrative of the content of a *cataloged-resource*.
           type: string
           maxLength: 4096
         identifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource within the catalogue.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* within the catalogue.
           type: string
           maxLength: 50
         keyword:
@@ -852,8 +851,7 @@ components:
         modified:
           "$ref": "#/components/schemas/dateOrDateTime"
         publisher:
-          description: The entity responsible for making the catalogued resource publicly
-            available.
+          description: The entity responsible for making the *cataloged-resource* available in the catalogue.
           type: string
           maxLength: 75
         securityClassification:
@@ -866,7 +864,7 @@ components:
           - TOP_SECRET
           - NOT_APPLICABLE
         status:
-          description: Lifecycle status of resource within catalogue
+          description: Lifecycle status of a *cataloged-resource* within the catalogue.
           type: string
           enum:
           - Draft
@@ -874,8 +872,7 @@ components:
           - Withdrawn
           - Deleted
         supplierIdentifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource a third party (supplier's) system.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* in a third party (supplier's) system.
           type: string
           maxLength: 50
         theme:
@@ -953,12 +950,11 @@ components:
             - name
             - email
         description:
-          description: A concise narrative of the content of an catalogued resource.
+          description: A concise narrative of the content of a *cataloged-resource*.
           type: string
           maxLength: 4096
         identifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource within the catalogue.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* within the catalogue.
           type: string
           maxLength: 50
         keyword:
@@ -971,8 +967,7 @@ components:
         modified:
           "$ref": "#/components/schemas/dateOrDateTime"
         publisher:
-          description: The entity responsible for making the catalogued resource publicly
-            available.
+          description: The entity responsible for making the *cataloged-resource* available in the catalogue.
           type: string
           maxLength: 75
         securityClassification:
@@ -985,7 +980,7 @@ components:
           - TOP_SECRET
           - NOT_APPLICABLE
         status:
-          description: Lifecycle status of resource within catalogue
+          description: Lifecycle status of a *cataloged-resource* within the catalogue.
           type: string
           enum:
           - Draft
@@ -993,8 +988,7 @@ components:
           - Withdrawn
           - Deleted
         supplierIdentifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource a third party (supplier's) system.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* in a third party (supplier's) system.
           type: string
           maxLength: 50
         theme:
@@ -1095,12 +1089,11 @@ components:
             - name
             - email
         description:
-          description: A concise narrative of the content of an catalogued resource.
+          description: A concise narrative of the content of a *cataloged-resource*.
           type: string
           maxLength: 4096
         identifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource within the catalogue.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* within the catalogue.
           type: string
           maxLength: 50
         keyword:
@@ -1113,8 +1106,7 @@ components:
         modified:
           "$ref": "#/components/schemas/dateOrDateTime"
         publisher:
-          description: The entity responsible for making the catalogued resource publicly
-            available.
+          description: The entity responsible for making the *cataloged-resource* available in the catalogue.
           type: string
           maxLength: 75
         securityClassification:
@@ -1127,7 +1119,7 @@ components:
           - TOP_SECRET
           - NOT_APPLICABLE
         status:
-          description: Lifecycle status of resource within catalogue
+          description: Lifecycle status of a *cataloged-resource* within the catalogue.
           type: string
           enum:
           - Draft
@@ -1135,8 +1127,7 @@ components:
           - Withdrawn
           - Deleted
         supplierIdentifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource a third party (supplier's) system.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* in a third party (supplier's) system.
           type: string
           maxLength: 50
         theme:
@@ -1243,12 +1234,11 @@ components:
             - name
             - email
         description:
-          description: A concise narrative of the content of an catalogued resource.
+          description: A concise narrative of the content of a *cataloged-resource*.
           type: string
           maxLength: 4096
         identifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource within the catalogue.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* within the catalogue.
           type: string
           maxLength: 50
         keyword:
@@ -1261,8 +1251,7 @@ components:
         modified:
           "$ref": "#/components/schemas/dateOrDateTime"
         publisher:
-          description: The entity responsible for making the catalogued resource publicly
-            available.
+          description: The entity responsible for making the *cataloged-resource* available in the catalogue.
           type: string
           maxLength: 75
         securityClassification:
@@ -1275,7 +1264,7 @@ components:
           - TOP_SECRET
           - NOT_APPLICABLE
         status:
-          description: Lifecycle status of resource within catalogue
+          description: Lifecycle status of a *cataloged-resource* within the catalogue.
           type: string
           enum:
           - Draft
@@ -1283,8 +1272,7 @@ components:
           - Withdrawn
           - Deleted
         supplierIdentifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource a third party (supplier's) system.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* in a third party (supplier's) system.
           type: string
           maxLength: 50
         theme:
@@ -1340,7 +1328,7 @@ components:
                 type: string
                 maxLength: 250
               mediaType:
-                description: The IANA media type, or file format, type, or extention, of
+                description: The IANA media type, or file format, type, or extension, of
                   the distribution file.
                 type: array
                 items:
@@ -1416,12 +1404,11 @@ components:
             - name
             - email
         description:
-          description: A concise narrative of the content of an catalogued resource.
+          description: A concise narrative of the content of a *cataloged-resource*.
           type: string
           maxLength: 4096
         identifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource within the catalogue.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* within the catalogue.
           type: string
           maxLength: 50
         keyword:
@@ -1434,8 +1421,7 @@ components:
         modified:
           "$ref": "#/components/schemas/dateOrDateTime"
         publisher:
-          description: The entity responsible for making the catalogued resource publicly
-            available.
+          description: The entity responsible for making the *cataloged-resource* available in the catalogue.
           type: string
           maxLength: 75
         securityClassification:
@@ -1448,7 +1434,7 @@ components:
           - TOP_SECRET
           - NOT_APPLICABLE
         status:
-          description: Lifecycle status of resource within catalogue
+          description: Lifecycle status of a *cataloged-resource* within the catalogue.
           type: string
           enum:
           - Draft
@@ -1456,8 +1442,7 @@ components:
           - Withdrawn
           - Deleted
         supplierIdentifier:
-          description: A unique number, code, or reference value assigned to a catalogued
-            resource a third party (supplier's) system.
+          description: A unique number, code, or reference value assigned to a *cataloged-resource* in a third party (supplier's) system.
           type: string
           maxLength: 50
         theme:
