@@ -146,7 +146,7 @@ paths:
     post:
       operationId: CreateDataSet
       description: >-
-        Creates a DCAT-UK Dataset resource.
+        Creates a dataset resource.
 
         The path to the newly created resource will be returned in the *Location* response header.
       tags:
@@ -161,7 +161,7 @@ paths:
               $ref: '#/components/schemas/Dataset'
             examples:
               Ex1:
-                summary: Creates a DCAT-UK resource that describes a dataset with a CSV file distribution.
+                summary: Creates a resource that describes a dataset with a CSV file distribution.
                 value: 
                     {
                       "supplierIdentifier": "acme-123",
@@ -236,7 +236,7 @@ paths:
     get:
       operationId: RetrieveDataset
       description: | 
-        Retrieves a DCAT-UK Dataset by identifier.
+        Retrieves a dataset resource by identifier.
       tags:
         - Datasets
       security:
@@ -253,7 +253,7 @@ paths:
                 $ref: '#/components/schemas/Dataset'
               examples:
                 Ex1:
-                  summary: Gets a DCAT-UK resource that describes a dataset with a CSV file distribution.
+                  summary: Gets a resource that describes a dataset with a CSV file distribution.
                   value: 
                    {
                       "identifier": "8d085327-21b6-4d8b-9705-88faad231d22",
@@ -297,7 +297,7 @@ paths:
     patch:
       operationId: UpdateDataset
       description: | 
-        Updates a DCAT-UK Dataset by identifier. 
+        Updates a dataset resource by identifier. 
 
         Implements JSON Merge Patch [https://www.rfc-editor.org/rfc/rfc7396](https://www.rfc-editor.org/rfc/rfc7396)
       tags:
@@ -441,7 +441,7 @@ paths:
     delete:
       operationId: RemoveDataset 
       description: | 
-        Deletes a DCAT-UK Dataset by identifier.
+        Deletes a dataset resource by identifier.
       tags:
         - Datasets
       security:
@@ -460,7 +460,7 @@ paths:
     post:
       operationId: CreateDataService
       description: >-
-        Creates a DCAT-UK Data Service resource.
+        Creates a data service resource.
 
         The path to the newly created resource will be returned in the *Location* response header.
       tags:
@@ -475,7 +475,7 @@ paths:
               $ref: '#/components/schemas/DataService'
             examples:
               Ex1:
-                summary: Creates a DCAT-UK resource that describes a dataservice containing a reference to a dataset.
+                summary: Creates a resource that describes a data service containing a reference to a dataset.
                 value:                   
                   {
                     "supplierIdentifier": "acme-123",
@@ -547,7 +547,7 @@ paths:
     get:
       operationId: RetrieveDataService
       description: | 
-        Retrieves a DCAT-UK Data Service by identifier.
+        Retrieves a data service resource by identifier.
       tags:
         - Data Services
       security:
@@ -606,7 +606,7 @@ paths:
     patch:
       operationId: UpdateDataService
       description: | 
-        Updates a DCAT-UK Data Service by identifier. 
+        Updates a data service resource by identifier. 
 
         Implements JSON Merge Patch [https://www.rfc-editor.org/rfc/rfc7396](https://www.rfc-editor.org/rfc/rfc7396)
       tags:
@@ -740,7 +740,7 @@ paths:
     delete:
       operationId: RemoveDataService 
       description: | 
-        Deletes a DCAT-UK Data Service by identifier.
+        Deletes a data service resource by identifier.
       tags:
         - Data Services
       security:
@@ -794,7 +794,7 @@ components:
 
     CatalogedResource:
       description: >-
-        Model of the core or minimum field-set for any DCAT-UK data asset. 
+        Model of the core or minimum field-set for any resource in the data catalogue. 
         
         
         The *cataloged-resource* is an abstract model, which can represent any data asset type. It is useful for the purpose of querying and reporting across the entire collection of data assets in a metadata catalogue, regardless of the underlying type.
