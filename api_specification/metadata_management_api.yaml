@@ -11,7 +11,7 @@ info:
 
     An example of a data catalogue implementing this schema is the [CDDO Data Marketplace](https://datamarketplace.gov.uk).
   
-  version: 3.1.1
+  version: 3.1.2
   
   contact: 
     name: CDDO Developer Portal
@@ -217,6 +217,8 @@ paths:
               examples: 
                 400-DatasetValidation:
                   $ref: '#/components/examples/400-DatasetValidation'
+                400-DatasetPublisherValidation:
+                  $ref: '#/components/examples/400-DatasetPublisherValidation'
         '409': 
           description: Conflict
           content:
@@ -805,6 +807,7 @@ components:
         - description
         - title
         - type
+        - publisher
       properties:
         accessRights:
           description: A rights statement that concerns how the distribution is accessed.
@@ -921,6 +924,7 @@ components:
         - description
         - title
         - type
+        - publisher
       properties:
         accessRights:
           description: A rights statement that concerns how the distribution is accessed.
@@ -1205,6 +1209,7 @@ components:
         - title
         - type
         - endpointDescription
+        - publisher
       properties:
         accessRights:
           description: A rights statement that concerns how the distribution is accessed.
@@ -1618,6 +1623,16 @@ components:
           detail: The distribution byteSize of '1Mb' is not an integer
           location: "/distribution/byteSize"
 
+    400-DatasetPublisherValidation:
+      summary: API client does not have permissions to publish as the specified publisher.
+      value:
+        message: Validation failures
+        code: DM00012
+        errors:
+        - type: Fatal
+          detail: You cannot create datasets for the specified 'publisher'
+          location: "/publisher"
+
     400-DataServiceValidation:
       summary: Validation problems with Data Service metadata.
       value:
@@ -1657,6 +1672,3 @@ components:
                 message: Data service with identifier <data marketplace identifier> does not exist.
                 code: DM00010
                 errors: []
-
-
-
