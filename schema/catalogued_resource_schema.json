@@ -99,21 +99,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": [
-          "Agriculture, fisheries and forestry",
-          "Business, economics and finance",
-          "Crime and justice",
-          "Culture, leisure and sport",
-          "Education",
-          "Energy",
-          "Environment and nature",
-          "Geography",
-          "Government and public sector",
-          "Health and care",
-          "Population and society",
-          "Science and technology",
-          "Transport and infrastructure"
-        ]
+        "maxLength": 50
       }
     },
     "title": {
