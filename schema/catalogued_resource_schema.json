@@ -9,7 +9,7 @@
       "description": "A rights statement that concerns how the distribution is accessed.",
       "type": "string",
       "enum": [
-        "INTERNAL",
+        "RESTRICTED",
         "OPEN",
         "COMMERCIAL"
       ]
@@ -32,7 +32,8 @@
             "type": "string",
             "enum": [
               "owner",
-              "contact"
+              "contact",
+              "approver"
             ]
           }
         },
@@ -41,6 +42,15 @@
           "email"
         ]
       }
+    },
+    "created": {
+      "description": "The date when the catalogued resource was first added to catalogue.",
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+    },
+    "creator": {
+      "description": "The organisation responsible for creating the catalogued resource.",
+      "type": "string",
+      "maxLength": 75
     },
     "description": {
       "description": "A concise narrative of the content of an catalogued resource.",
@@ -51,6 +61,10 @@
       "description": "A unique number, code, or reference value assigned to a catalogued resource within the catalogue.",
       "type": "string",
       "maxLength": 50
+    },
+    "issued": {
+      "description": "The date the catalogued resource was first made available.",
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "keyword": {
       "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",

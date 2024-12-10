@@ -27,7 +27,7 @@
   ],
   "publisher": "academy-for-social-justice",
   "securityClassification": "OFFICIAL",
-  "accessRights": "INTERNAL",
+  "accessRights": "OPEN",
   "endpointDescription": "http://example.com/path/to/swagger",
   "endpointURL": "http://example.com/api/v1",
   "servesDataset": [
