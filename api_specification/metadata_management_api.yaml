@@ -26,13 +26,13 @@ servers:
 tags: 
 
   - name: Cataloged Resources
-    description:  >- 
+    description:  >-
       Operations concerning the *cataloged-resource* model.
   - name: Datasets
-    description:  >- 
+    description:  >-
       Operations concerning the *dataset* model. 
   - name: Data Services
-    description:  >- 
+    description:  >-
       Operations concerning the *data-service* model. 
 
 paths:
@@ -41,8 +41,9 @@ paths:
 
     get:
       operationId: queryDataAssets
-      description: | 
-        Performs a filtered query against your organisations data assets.
+      summary: Search your datasets
+      description: |
+        You can enter a search term to filter your organisation's datasets in the Data Marketplace.
       tags:
         - Cataloged Resources
       security:
@@ -52,7 +53,7 @@ paths:
         - name: filter
           in: query
           description: >-
-            Returns data asset metadata where a match is found against the following fields:
+              This is your search term. The system will look for matches against these fields:
             
               - title
               - keywords
@@ -160,6 +161,7 @@ paths:
 
     post:
       operationId: CreateDataSet
+      summary: Submit dataset
       description: >-
         Creates a dataset resource.
 
@@ -254,7 +256,8 @@ paths:
 
     get:
       operationId: RetrieveDataset
-      description: | 
+      summary: Get dataset
+      description: |
         Retrieves a dataset resource by identifier.
       tags:
         - Datasets
@@ -315,7 +318,8 @@ paths:
 
     patch:
       operationId: UpdateDataset
-      description: | 
+      summary: Update dataset
+      description: |
         Updates a dataset resource by identifier. 
 
         Implements JSON Merge Patch [https://www.rfc-editor.org/rfc/rfc7396](https://www.rfc-editor.org/rfc/rfc7396)
@@ -458,8 +462,9 @@ paths:
           $ref: '#/components/responses/404-DatasetNotFound'
 
     delete:
-      operationId: RemoveDataset 
-      description: | 
+      operationId: RemoveDataset
+      summary: Delete dataset
+      description: |
         Deletes a dataset resource by identifier.
       tags:
         - Datasets
@@ -478,6 +483,7 @@ paths:
 
     post:
       operationId: CreateDataService
+      summary: Submit Data Service
       description: >-
         Creates a data service resource.
 
@@ -569,7 +575,8 @@ paths:
 
     get:
       operationId: RetrieveDataService
-      description: | 
+      summary: Get Data Service
+      description: |
         Retrieves a data service resource by identifier.
       tags:
         - Data Services
@@ -630,7 +637,8 @@ paths:
 
     patch:
       operationId: UpdateDataService
-      description: | 
+      summary: Update Data Service
+      description: |
         Updates a data service resource by identifier. 
 
         Implements JSON Merge Patch [https://www.rfc-editor.org/rfc/rfc7396](https://www.rfc-editor.org/rfc/rfc7396)
@@ -767,8 +775,9 @@ paths:
           $ref: '#/components/responses/404-DataServiceNotFound'
 
     delete:
-      operationId: RemoveDataService 
-      description: | 
+      operationId: RemoveDataService
+      summary: Delete Data Service
+      description: |
         Deletes a data service resource by identifier.
       tags:
         - Data Services
