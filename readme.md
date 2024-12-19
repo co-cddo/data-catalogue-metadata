@@ -105,3 +105,23 @@ documentation making it easy for back end implementation and client side consump
 A Swagger UI representation of the API Specification can be found at
 [/swagger](https://co-cddo.github.io/data-catalogue-metadata/swagger/)
 on this repositories Github pages.
+
+#### Bundling the API specification into a single file
+
+The API Specification uses references to the JSON schema files for definitions of most object. If you need to have
+the specification represented in a single file without references to other files, the Swagger CLI bundle
+command can be used to do this.
+
+For example:
+
+Assuming [Node](https://nodejs.org) is installed locally, Swagger CLI can be installed with:
+
+```
+npm install -g @apidevtools/swagger-cli
+```
+
+Then the following command run at the root of this app, will build a new api configuration at `api_specification/bundled_metadata_management_api.yaml`
+
+```
+swagger-cli bundle -o api_specification/bundled_metadata_management_api.yaml api_specification/metadata_management_api.yaml
+```

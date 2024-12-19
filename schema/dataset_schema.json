@@ -20,6 +20,11 @@
               "maxLength": 50
             }
           },
+          "accessURL": {
+            "description": "The location from which the Dataset can be accessed",
+            "type": "string",
+            "maxLength": 250
+          },
           "downloadURL": {
             "description": "The location from which the Dataset can be downloaded",
             "type": "string",

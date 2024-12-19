@@ -1,5 +1,7 @@
-require "json-schema"
-require "json"
+# frozen_string_literal: true
+
+require 'json-schema'
+require 'json'
 
 def json_from(path)
   JSON.parse(File.read(path))
