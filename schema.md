@@ -31,6 +31,13 @@ returned could range from simple Yes/No boolean responses to gigabytes of struct
 
 The data gathered in support of a data share request.
 
+### Unified
+
+[schema/unified_schema.json](https://co-cddo.github.io/data-catalogue-metadata/schema/unified_schema.json)
+
+A single metadata object that can be used to describe either a dataset or data service. This object could be used as an
+alternative representation of either of those other core objects.
+
 Shared objects
 --------------
 

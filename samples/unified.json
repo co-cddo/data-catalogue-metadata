@@ -1,0 +1,42 @@
+{
+  "identifier": "8d085327-21b6-4d8b-9705-88faad231d23",
+  "supplierIdentifier": "acme-123",
+  "modified": "2023-12-09T16:09:53+00:00",
+  "status": "Published",
+  "title": "Advance Passenger Information",
+  "description": "Travel data and personal data given to airlines by passengers. API covers both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.",
+  "type": "Unified",
+  "theme": ["Transport and infrastructure", "Population and society"],
+  "keyword": ["Air travel", "Passport", "Airports", "leaving UK", "entering UK"],
+  "contactPoint": [
+    {
+      "name": "Raz Baba",
+      "email": "raz.baba@social.gov.uk"
+    }
+  ],
+  "publisher": "academy-for-social-justice",
+  "securityClassification": "OFFICIAL",
+  "accessRights": "OPEN",
+  "relatedResources": [
+    {
+      "identifier": "8d085327-21b6-4d8b-9705-88faad231d22",
+      "relationshipType": "Serves",
+      "title": "Advance Passenger Information Dataset"
+    }
+  ],
+  "distributions": [
+    {
+      "title": "API Documentation",
+      "description": "Swagger documentation for the API.",
+      "url": "http://example.com/path/to/swagger",
+      "type": "documentation"
+    },
+    {
+      "title": "CSV Download",
+      "description": "Download the dataset in CSV format.",
+      "url": "http://example.com/path/to/file.csv",
+      "type": "file",
+      "format": "text/csv"
+    }
+  ]
+}

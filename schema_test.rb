@@ -20,6 +20,12 @@ def validate(sample:, schema:)
 end
 
 validate(
+  sample: 'samples/unified.json',
+  schema: 'schema/unified_schema.json'
+)
+
+
+validate(
   sample: 'samples/dataset.json',
   schema: 'schema/catalogued_resource_schema.json'
 )

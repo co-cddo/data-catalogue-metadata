@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Catalogued Resource schema",
+  "$id": "schemas/catalogued_resource",
+  "description": "Unified Metadata schema for a Catalogued Resource",
+  "type": "object",
+  "properties": {
+    "accessRights": {
+      "description": "A rights statement that concerns how the distribution is accessed.",
+      "type": "string",
+      "enum": [
+        "RESTRICTED",
+        "OPEN",
+        "COMMERCIAL"
+      ]
+    },
+    "contactPoint": {
+      "description": "Contact information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "email": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.+\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z0-9\\-.]+$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "owner",
+              "contact",
+              "approver"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ]
+      }
+    },
+    "description": {
+      "description": "A concise narrative of the content of a catalogued resource.",
+      "type": "string",
+      "maxLength": 4096
+    },
+    "distribution": {
+      "description": "A collection of distributions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "Text used when displaying details of the distribution.",
+            "type": "string",
+            "maxLength": 4096
+          },
+          "format": {
+            "description": "The IANA media type, or file format, type, or extention, of the distribution file.",
+            "type": "string",
+            "maxLength": 100
+          },
+          "title": {
+            "description": "Text used when displaying links to or labelling the distribution.",
+            "type": "string",
+            "maxLength": 200
+          },
+          "type": {
+            "description": "The distribution type. For example: file, documentation, service",
+            "type": "string",
+            "maxLength": 100
+          },
+          "url": {
+            "description": "The location from which the resource can be downloaded or accessed",
+            "type": "string",
+            "maxLength": 250
+          }
+        },
+        "required": [
+          "title",
+          "type",
+          "url"
+        ]
+      }
+    },
+    "identifier": {
+      "description": "A unique number, code, or reference value assigned to a resource within the catalogue.",
+      "type": "string",
+      "maxLength": 50
+    },
+    "keyword": {
+      "description": "Terms (words or phrases) assigned to describe a resource.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 75
+      }
+    },
+    "modified": {
+      "description": "The date on which the metadata was created or last updated.",
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+    },
+    "publisher": {
+      "description": "The entity responsible for making the catalogued resource publicly available.",
+      "type": "string",
+      "maxLength": 75
+    },
+    "relatedResource": {
+      "description": "Another resource that is related to the current catalogued resource",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "description": "A unique number, code, or reference value assigned the related resource.",
+            "type": "string",
+            "maxLength": 50
+          },
+          "relationshipType": {
+            "description": "How the related resource is related to the curreent resource. For example 'Servers'",
+            "type": "string",
+            "maxLength": 50
+          },
+          "title": {
+            "description": "Text used when labelling the related resource.",
+            "type": "string",
+            "maxLength": 200
+          }
+        }
+      }
+    },
+    "securityClassification": {
+      "description": "An information security designation that identifies the minimum level of protection assigned to an information resource.",
+      "type": "string",
+      "enum": [
+        "OFFICIAL",
+        "SECRET",
+        "TOP_SECRET",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "status": {
+      "description": "Lifecycle status of resource within catalogue",
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Published",
+        "Withdrawn",
+        "Deleted"
+      ]
+    },
+    "supplierIdentifier": {
+      "description": "A unique code, url, or reference value assigned to a catalogued resource a third party (supplier's) system.",
+      "type": "string",
+      "maxLength": 250
+    },
+    "theme": {
+      "description": "A controlled or filter term that expresses the broad topical content of a resource.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 100
+      }
+    },
+    "title": {
+      "description": "Text used when displaying links to or labelling the resource.",
+      "type": "string",
+      "maxLength": 200
+    },
+    "type": {
+      "description": "The type of metadata record. Used to identify actions needed to process the metadata",
+      "type": "string",
+      "enum": [
+        "Unified"
+      ]
+    }
+  },
+    "required": [
+    "contactPoint",
+    "description",
+    "title",
+    "type"
+  ],
+  "unevaluatedProperties": false
+}
