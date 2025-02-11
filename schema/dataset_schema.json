@@ -25,10 +25,20 @@
             "type": "string",
             "maxLength": 250
           },
+          "description":{
+            "description": "Human readable description of the distribution",
+            "type": "string",
+            "maxLength": 4096
+          },
           "downloadURL": {
             "description": "The location from which the Dataset can be downloaded",
             "type": "string",
             "maxLength": 250
+          },
+          "format": {
+            "description": "Human readable description of the format of the data provided by the distribution",
+            "type": "string",
+            "maxLength": 200
           },
           "mediaType": {
             "description": "The IANA media type, or file format, type, or extention, of the distribution file.",
@@ -37,6 +47,11 @@
               "type": "string",
               "maxLength": 100
             }
+          },
+          "title": {
+            "description": "A title for the distribution",
+            "type": "string",
+            "maxLength": 200
           }
         },
         "required": []
