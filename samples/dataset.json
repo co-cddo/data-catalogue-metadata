@@ -28,9 +28,19 @@
   "accessRights": "OPEN",
   "distribution": [
     {
+      "title": "CSV download",
+      "description": "Complete dataset provided as a downloadable file",
       "accessService": ["8d085327-21b6-4d8b-9705-88faad231d23"],
       "downloadURL": "http://example.com/path/to/file.csv",
+      "format": "CSV file",
       "mediaType":["text/csv"]
+    },
+    {
+      "title": "Rest API",
+      "accessURL": "http://example.com/api/",
+      "description": "A fully queryable REST API with JSON and XML output",
+      "format": "API",
+      "title": "Example REST API"
     }
   ]
 }
