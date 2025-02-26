@@ -23,7 +23,7 @@
             }
           },
           "accessURL": {
-            "description": "The location from which the Dataset can be accessed",
+            "description": "The location from which the Dataset can be accessed. To be used instead of downloadURL when describing an API",
             "type": "string",
             "maxLength": 250
           },
@@ -33,7 +33,7 @@
             "maxLength": 4096
           },
           "downloadURL": {
-            "description": "The location from which the Dataset can be downloaded",
+            "description": "The location from which the Dataset can be downloaded or Web Page accessed (when mediaType text/html)",
             "type": "string",
             "maxLength": 250
           },
