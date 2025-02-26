@@ -57,10 +57,6 @@
         "required": []
       }
     },
-    "issued": {
-      "description": "The date the data was issued.",
-      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
-    },
     "updateFrequency": {
       "description": "The schedule for how often the data is updated",
       "type": "string"

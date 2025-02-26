@@ -11,7 +11,8 @@
       "enum": [
         "RESTRICTED",
         "OPEN",
-        "COMMERCIAL"
+        "COMMERCIAL",
+        "INTERNAL" // To be removed - temporary assignment to enable transition of existing data
       ]
     },
     "contactPoint": {
@@ -65,6 +66,25 @@
     "issued": {
       "description": "The date the catalogued resource was first made available.",
       "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+    },
+    "licence": {
+      "description": "A legal document under which the resource is made available.",
+      "type": "Object",
+      "properties": {
+        "title": {
+          "description": "Name or title used to label licence",
+          "type": "string",
+          "maxLength": 75
+        },
+        "licenseURL": {
+          "description": "The location of the licence document",
+          "type": "string",
+          "maxLength": 250
+        }
+      },
+      "required": [
+        "licenceURL"
+      ]
     },
     "keyword": {
       "description": "Uncontrolled terms (words or phrases) assigned to describe an information resource.",
