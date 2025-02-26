@@ -4,7 +4,9 @@
   "$id": "schemas/dataGroup",
   "description": "Metadata schema for a Data group",
   "type": "object",
-  "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json",
+  "allOf":[{
+    "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json"
+  }],
   "properties": {
     "endpointDescription": {
       "description": "A description of the services available via the end-points, including their operations, parameters etc.",
