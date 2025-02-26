@@ -4,7 +4,9 @@
   "$id": "schemas/dataset",
   "description": "Metadata schema for a Dataset",
   "type": "object",
-  "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json",
+  "allOf":[{
+    "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json"
+  }],
   "properties": {
     "distribution": {
       "description": "A collection of distributions",

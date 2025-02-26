@@ -4,7 +4,9 @@
   "$id": "schemas/dataService",
   "description": "Metadata schema for a Data Service",
   "type": "object",
-  "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json",
+  "allOf":[{
+    "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json"
+  }],
   "properties": {
     "apiType": {
       "description": "The API type.",
