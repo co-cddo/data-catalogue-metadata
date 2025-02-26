@@ -23,6 +23,10 @@
       "email": "robert.nichols@digital.cabinet-office.gov.uk"
     }
   ],
+  "licence": {
+    "title": "Creative Commons",
+    "licenceURL": "https://creativecommons.org/licenses/by/4.0"
+  },
   "publisher": "academy-for-social-justice",
   "securityClassification": "OFFICIAL",
   "accessRights": "OPEN",
@@ -39,8 +43,14 @@
       "title": "Rest API",
       "accessURL": "http://example.com/api/",
       "description": "A fully queryable REST API with JSON and XML output",
-      "format": "API",
-      "title": "Example REST API"
+      "format": "API"
+    },
+    {
+      "title": "Web Page",
+      "description": "A web page that provides the data, links to downloads, or documentation.",
+      "downloadURL": "http://example.com/path/to/page",
+      "format": "Web page",
+      "mediaType":["text/html"]
     }
   ]
 }
