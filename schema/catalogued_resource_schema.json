@@ -67,23 +67,23 @@
       "description": "The date the catalogued resource was first made available.",
       "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
-    "licence": {
+    "license": {
       "description": "A legal document under which the resource is made available.",
       "type": "Object",
       "properties": {
         "title": {
-          "description": "Name or title used to label licence",
+          "description": "Name or title used to label license",
           "type": "string",
           "maxLength": 75
         },
         "licenseURL": {
-          "description": "The location of the licence document",
+          "description": "The location of the license document",
           "type": "string",
           "maxLength": 250
         }
       },
       "required": [
-        "licenceURL"
+        "licenseURL"
       ]
     },
     "keyword": {
