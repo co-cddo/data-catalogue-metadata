@@ -23,9 +23,9 @@
       "email": "robert.nichols@digital.cabinet-office.gov.uk"
     }
   ],
-  "licence": {
+  "license": {
     "title": "Creative Commons",
-    "licenceURL": "https://creativecommons.org/licenses/by/4.0"
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0"
   },
   "publisher": "academy-for-social-justice",
   "securityClassification": "OFFICIAL",
