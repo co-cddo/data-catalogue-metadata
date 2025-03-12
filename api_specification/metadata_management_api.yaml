@@ -101,7 +101,8 @@ paths:
                         "contactPoint": [
                           {
                             "name": "Rob Nichols",
-                            "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                            "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                            "role": "contact"
                           }
                         ],
                         "publisher": "academy-for-social-justice",
@@ -140,7 +141,8 @@ paths:
                         "contactPoint": [
                           {
                             "name": "Rob Nichols",
-                            "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                            "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                            "role": "contact"
                           }
                         ],
                         "publisher": "academy-for-social-justice",
@@ -202,7 +204,8 @@ paths:
                     "contactPoint": [
                       {
                         "name": "Rob Nichols",
-                        "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                        "role": "contact"
                       }
                     ],
                     "publisher": "academy-for-social-justice",
@@ -299,7 +302,8 @@ paths:
                       "contactPoint": [
                         {
                           "name": "Rob Nichols",
-                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                          "role": "contact"
                         }
                       ],
                       "publisher": "academy-for-social-justice",
@@ -394,7 +398,8 @@ paths:
                       "contactPoint": [
                         {
                           "name": "Rob Nichols",
-                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                          "role": "contact"
                         }
                       ],
                       "publisher": "academy-for-social-justice",
@@ -433,7 +438,8 @@ paths:
                       "contactPoint": [
                         {
                           "name": "Tom Redfern",
-                          "email": "tom.redfern@digital.cabinet-office.gov.uk"
+                          "email": "tom.redfern@digital.cabinet-office.gov.uk",
+                          "role": "contact"
                         }
                       ],
                       "publisher": "academy-for-social-justice",
@@ -526,7 +532,8 @@ paths:
                     "contactPoint": [
                       {
                         "name": "Rob Nichols",
-                        "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                        "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                        "role": "contact"
                       }
                     ],
                     "publisher": "academy-for-social-justice",
@@ -620,7 +627,8 @@ paths:
                       "contactPoint": [
                         {
                           "name": "Rob Nichols",
-                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                          "role": "contact"
                         }
                       ],
                       "publisher": "academy-for-social-justice",
@@ -709,7 +717,8 @@ paths:
                       "contactPoint": [
                         {
                           "name": "Rob Nichols",
-                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                          "role": "contact"
                         }
                       ],
                       "publisher": "academy-for-social-justice",
@@ -749,7 +758,8 @@ paths:
                       "contactPoint": [
                         {
                           "name": "Rob Nichols",
-                          "email": "robert.nichols@digital.cabinet-office.gov.uk"
+                          "email": "robert.nichols@digital.cabinet-office.gov.uk",
+                          "role": "contact"
                         }
                       ],
                       "publisher": "academy-for-social-justice",
