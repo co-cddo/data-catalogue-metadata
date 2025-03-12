@@ -40,7 +40,8 @@
         },
         "required": [
           "name",
-          "email"
+          "email",
+          "role"
         ]
       }
     },
