@@ -34,17 +34,17 @@ The data gathered in support of a data share request.
 Shared objects
 --------------
 
-### Catalogued Resource
+### Cataloged Resource
 
-[schema/catalogued_resource_schema.json](https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json)
+[schema/cataloged_resource_schema.json](https://co-cddo.github.io/data-catalogue-metadata/schema/cataloged_resource_schema.json)
 
 The core objects share a common root structure. That is, there are a number of fields that are contained within each of
 the core objects. Rather than repeating the defining schema for these common fields in each of the core object schema,
-these field descriptions are defined once in the Catalogued Resource. Then each core object schema refers to this common
+these field descriptions are defined once in the Cataloged Resource. Then each core object schema refers to this common
 schema.
 
 The effect of this is that Dataset, Data Service, and Data Share objects will each contain all the fields described in
-the Catalogued Resource, as well as the fields specific to themselves.
+the Cataloged Resource, as well as the fields specific to themselves.
 
 ### Shared schema
 
@@ -67,8 +67,8 @@ all the examination datasets within a period via a single group object.
 
 The main purpose of the Data Group is as a container for references (ids or locations)  for the objects within the group.
 
-The Data Group shares the common structure of the core objects and is a type of catalogued resource. Therefore it contains
-the fields defined in the catalogued resource schema in addition to the fields defined in its own schema.
+The Data Group shares the common structure of the core objects and is a type of cataloged resource. Therefore it contains
+the fields defined in the cataloged resource schema in addition to the fields defined in its own schema.
 
 As the Data Group shares the same basic structure as the core objects, it can be used as a replacement to one of those
 objects within the systems using them. This facilitates actions such as a search for metadata concerning “exam results”

@@ -21,12 +21,12 @@ end
 
 validate(
   sample: 'samples/dataset.json',
-  schema: 'schema/catalogued_resource_schema.json'
+  schema: 'schema/cataloged_resource_schema.json'
 )
 
 validate(
   sample: 'samples/data_service.json',
-  schema: 'schema/catalogued_resource_schema.json'
+  schema: 'schema/cataloged_resource_schema.json'
 )
 
 validate(

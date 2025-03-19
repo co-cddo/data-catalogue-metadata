@@ -5,7 +5,7 @@
   "description": "Metadata schema for a Data group",
   "type": "object",
   "allOf":[{
-    "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json"
+    "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/cataloged_resource_schema.json"
   }],
   "properties": {
     "endpointDescription": {
@@ -14,7 +14,7 @@
       "maxLength": 250
     },
     "hasPart": {
-      "description": "A collection of catalogued resources",
+      "description": "A collection of cataloged resources",
       "type": "array",
       "items": {
         "type": "string",

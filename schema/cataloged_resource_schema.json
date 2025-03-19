@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Catalogued Resource schema",
-  "$id": "schemas/catalogued_resource",
-  "description": "Metadata schema for a Catalogued Resource",
+  "title": "Cataloged Resource schema",
+  "$id": "schemas/cataloged_resource",
+  "description": "Metadata schema for a Cataloged Resource",
   "type": "object",
   "properties": {
     "accessRights": {
@@ -46,27 +46,27 @@
       }
     },
     "created": {
-      "description": "The date when the catalogued resource was first added to catalogue.",
-      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+      "description": "The date when the cataloged resource was first added to cataloge.",
+      "$ref": "https://co-cddo.github.io/data-cataloge-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "creator": {
-      "description": "The organisation responsible for creating the catalogued resource.",
+      "description": "The organisation responsible for creating the cataloged resource.",
       "type": "string",
       "maxLength": 75
     },
     "description": {
-      "description": "A concise narrative of the content of an catalogued resource.",
+      "description": "A concise narrative of the content of an cataloged resource.",
       "type": "string",
       "maxLength": 4096
     },
     "identifier": {
-      "description": "A unique number, code, or reference value assigned to a catalogued resource within the catalogue.",
+      "description": "A unique number, code, or reference value assigned to a cataloged resource within the catalog.",
       "type": "string",
       "maxLength": 50
     },
     "issued": {
-      "description": "The date the catalogued resource was first made available.",
-      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+      "description": "The date the cataloged resource was first made available.",
+      "$ref": "https://co-cddo.github.io/data-cataloge-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "license": {
       "description": "A legal document under which the resource is made available.",
@@ -97,10 +97,10 @@
     },
     "modified": {
       "description": "The date on which the data was created or last updated.",
-      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+      "$ref": "https://co-cddo.github.io/data-cataloge-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "publisher": {
-      "description": "The entity responsible for making the catalogued resource publicly available.",
+      "description": "The entity responsible for making the cataloged resource publicly available.",
       "type": "string",
       "maxLength": 75
     },
@@ -115,7 +115,7 @@
       ]
     },
     "status": {
-      "description": "Lifecycle status of resource within catalogue",
+      "description": "Lifecycle status of resource within cataloge",
       "type": "string",
       "enum": [
         "Draft",
@@ -125,7 +125,7 @@
       ]
     },
     "supplierIdentifier": {
-      "description": "A unique number, code, or reference value assigned to a catalogued resource a third party (supplier's) system.",
+      "description": "A unique number, code, or reference value assigned to a cataloged resource a third party (supplier's) system.",
       "type": "string",
       "maxLength": 50
     },

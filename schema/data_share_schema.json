@@ -5,11 +5,11 @@
   "description": "Metadata schema for a Data Share",
   "type": "object",
   "allOf":[{
-    "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/catalogued_resource_schema.json"
+    "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/cataloged_resource_schema.json"
   }],
   "properties": {
     "relatedResource": {
-      "description": "The identifier of a catalogued resource that is the target of this share request",
+      "description": "The identifier of a cataloged resource that is the target of this share request",
       "type": "string",
       "maxLength": 50
     }
