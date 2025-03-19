@@ -12,7 +12,7 @@
         "RESTRICTED",
         "OPEN",
         "COMMERCIAL",
-        "INTERNAL" // To be removed - temporary assignment to enable transition of existing data
+        "INTERNAL"
       ]
     },
     "contactPoint": {
