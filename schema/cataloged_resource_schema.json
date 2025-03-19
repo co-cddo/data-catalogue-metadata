@@ -47,7 +47,7 @@
     },
     "created": {
       "description": "The date when the cataloged resource was first added to cataloge.",
-      "$ref": "https://co-cddo.github.io/data-cataloge-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "creator": {
       "description": "The organisation responsible for creating the cataloged resource.",
@@ -66,7 +66,7 @@
     },
     "issued": {
       "description": "The date the cataloged resource was first made available.",
-      "$ref": "https://co-cddo.github.io/data-cataloge-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "license": {
       "description": "A legal document under which the resource is made available.",
@@ -97,7 +97,7 @@
     },
     "modified": {
       "description": "The date on which the data was created or last updated.",
-      "$ref": "https://co-cddo.github.io/data-cataloge-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
+      "$ref": "https://co-cddo.github.io/data-catalogue-metadata/schema/shared_schema.json#/schemas/dateOrDateTime"
     },
     "publisher": {
       "description": "The entity responsible for making the cataloged resource publicly available.",
