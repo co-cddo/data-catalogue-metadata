@@ -5,7 +5,7 @@
   "status": "Published",
   "title": "Annual exam results",
   "description": "A group of datasets, where each set represents the examination results for a particular year",
-  "type": "Data Group",
+  "type": ["Data Group"],
   "theme": [
     "Education"
   ],

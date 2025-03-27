@@ -5,7 +5,7 @@
   "status": "Published",
   "title": "Advance Passenger Information",
   "description": "Travel data and personal data given to airlines by passenger. API covers  both inbound and outbound air passengers. API includes the passenger’s full name, nationality, date of birth, gender and travel document number, type and country of issue.The data does not include those arriving by sea or rail routes, by private aircraft or via the Common Travel Area (CTA).",
-  "type": "Data Set",
+  "type": ["Data Set"],
   "theme": [
     "Transport and infrastructure",
     "Population and society"

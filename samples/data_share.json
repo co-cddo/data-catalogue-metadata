@@ -5,7 +5,7 @@
   "status": "Published",
   "title": "Request to access Advance Passenger Information",
   "description": "DfE's travel team wish to access Travel data and personal data given to airlines by passenger.",
-  "type": "Data Share",
+  "type": ["Data Share"],
   "theme": [
     "Transport and infrastructure",
     "Population and society"
