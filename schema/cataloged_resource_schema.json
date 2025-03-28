@@ -70,7 +70,7 @@
     },
     "license": {
       "description": "A legal document under which the resource is made available.",
-      "type": "Object",
+      "type": "object",
       "properties": {
         "title": {
           "description": "Name or title used to label license",
@@ -144,13 +144,16 @@
     },
     "type": {
       "description": "Topic: A controlled term that expresses the broad topical content of an information resource. Subject: A controlled term that expresses a topic of the intellectual content of an information resource.",
-      "type": "string",
-      "enum": [
-        "Data Set",
-        "Data Service",
-        "Data Group",
-        "Data Share"
-      ]
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Data Set",
+          "Data Service",
+          "Data Group",
+          "Data Share"
+        ]
+      }
     }
   },
   "required": [
